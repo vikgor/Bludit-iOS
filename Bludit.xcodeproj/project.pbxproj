@@ -15,6 +15,9 @@
 		05B00C6E2435D6D4002D6A11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B00C6C2435D6D4002D6A11 /* LaunchScreen.storyboard */; };
 		05B00C792435D6D4002D6A11 /* BluditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C782435D6D4002D6A11 /* BluditTests.swift */; };
 		05B00C842435D6D4002D6A11 /* BluditUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C832435D6D4002D6A11 /* BluditUITests.swift */; };
+		05B00C922435D736002D6A11 /* BluditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C912435D736002D6A11 /* BluditAPI.swift */; };
+		05B00C952435D7B5002D6A11 /* PagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C942435D7B5002D6A11 /* PagesResponse.swift */; };
+		05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C962435E84F002D6A11 /* TagsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		05B00C7F2435D6D4002D6A11 /* BluditUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluditUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B00C832435D6D4002D6A11 /* BluditUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluditUITests.swift; sourceTree = "<group>"; };
 		05B00C852435D6D4002D6A11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05B00C912435D736002D6A11 /* BluditAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluditAPI.swift; sourceTree = "<group>"; };
+		05B00C942435D7B5002D6A11 /* PagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesResponse.swift; sourceTree = "<group>"; };
+		05B00C962435E84F002D6A11 /* TagsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,7 @@
 				05B00C612435D6CD002D6A11 /* AppDelegate.swift */,
 				05B00C632435D6CD002D6A11 /* SceneDelegate.swift */,
 				05B00C652435D6CD002D6A11 /* ViewController.swift */,
+				05B00C932435D789002D6A11 /* Network */,
 				05B00C672435D6CD002D6A11 /* Main.storyboard */,
 				05B00C6A2435D6D3002D6A11 /* Assets.xcassets */,
 				05B00C6C2435D6D4002D6A11 /* LaunchScreen.storyboard */,
@@ -126,6 +133,16 @@
 				05B00C852435D6D4002D6A11 /* Info.plist */,
 			);
 			path = BluditUITests;
+			sourceTree = "<group>";
+		};
+		05B00C932435D789002D6A11 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				05B00C912435D736002D6A11 /* BluditAPI.swift */,
+				05B00C942435D7B5002D6A11 /* PagesResponse.swift */,
+				05B00C962435E84F002D6A11 /* TagsResponse.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B00C922435D736002D6A11 /* BluditAPI.swift in Sources */,
+				05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */,
 				05B00C662435D6CD002D6A11 /* ViewController.swift in Sources */,
 				05B00C622435D6CD002D6A11 /* AppDelegate.swift in Sources */,
+				05B00C952435D7B5002D6A11 /* PagesResponse.swift in Sources */,
 				05B00C642435D6CD002D6A11 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
