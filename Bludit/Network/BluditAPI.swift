@@ -11,9 +11,9 @@ import Foundation
 class BluditAPI {
     
     public static let shared = BluditAPI()
-    private let session = URLSession.shared
     private var components = URLComponents()
-    private let apiKey = "96284efd0ddf99daf78591a94321917c"
+    private let apiToken = "96284efd0ddf99daf78591a94321917c"
+    private let authToken = "ea4348deb60c7638848d6e1888d18e2c"
     private let jsonDecoder: JSONDecoder = {
        let jsonDecoder = JSONDecoder()
        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -26,21 +26,37 @@ class BluditAPI {
     public init() {
         components.scheme = "https"
         components.host = "8137147.xyz"
-        components.queryItems = [
-            URLQueryItem(name: "token", value: apiKey),
-            //            URLQueryItem(name: "query", value: query)
-        ]
+        components.queryItems = [URLQueryItem(name: "token", value: apiToken)]
     }
     
     /// Generic API request
-    private func fetchData<T: Decodable> (url: URL,
-                                         username: String,
-                                         password: String,
-                                         completion: @escaping (T) -> Void ) {
-        let url = components.url!
-        print(url)
+    private func universalRequest<T: Decodable> (httpMethod: String,
+                                                 url: URL,
+                                                 parameters: [String : String],
+                                                 completion: @escaping (T) -> Void ) {
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: .main)
-        session.dataTask(with: url) { data, response, error in
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod
+        
+        switch httpMethod {
+        case "POST",
+             "PUT":
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters,
+                                                              options: .prettyPrinted)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        case "GET":
+            break
+        default:
+            break
+        }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        session.dataTask(with: request) { data, response, error in
             if error != nil || data == nil {
                 print("Client error!")
                 return
@@ -60,56 +76,124 @@ class BluditAPI {
             }
             
             do {
+                // 2 next lines are used for debugging, delete later
+                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                print(json)
                 let content = try self.jsonDecoder.decode(T.self, from: data!)
                 DispatchQueue.main.async {
                     completion(content)
                 }
-            } catch {
+            } catch let error {
                 print("JSON error: \(error.localizedDescription)")
             }
         }.resume()
     }
     
     /// List all pages (15 pages by default)
-    public func listPages(username: String,
-                          password: String) {
+    public func listPages() {
         components.path = APIEndpoints.pages.rawValue
+        let parameters = ["token": apiToken]
+        let allowedParameters = [
+            URLQueryItem(name: "published", value: "true"),
+            URLQueryItem(name: "sticky", value: "false"),
+            URLQueryItem(name: "static", value: "false"),
+            URLQueryItem(name: "draft", value: "false"),
+            URLQueryItem(name: "untagged", value: "false")
+        ]
+        components.queryItems?.append(contentsOf: allowedParameters)
         let url = components.url!
         
-        fetchData(url: url,
-                  username: username,
-                  password: password) { (pagesResponse: PagesResponse) in
-                    print("tokenResponse is \(pagesResponse)")
-                    
+        universalRequest(httpMethod: "GET",
+                         url: url,
+                         parameters: parameters) { (response: ListPagesResponse) in
+                            print("Response is \(response)")
+        }
+    }
+    
+    /// Find a particular page
+    /// - Parameter query: <PAGE-KEY> : PageDetails.key
+    public func findPage(query: String) {
+        components.path = "\(APIEndpoints.pages.rawValue)/\(query)"
+        let parameters = ["token": apiToken]
+        let url = components.url!
+        
+        universalRequest(httpMethod: "GET",
+                         url: url,
+                         parameters: parameters) { (response: FindPageResponse) in
+                            print("Response is \(response)")
+        }
+    }
+    
+    /// Create new page
+    /// - Parameters:
+    ///   - title: Page title
+    ///   - content: Page content
+    public func createPage(title: String,
+                           content: String) {
+        components.path = APIEndpoints.pages.rawValue
+        let url = components.url!
+        let parameters = ["token": apiToken,
+                          "authentication": authToken,
+                          "title": title,
+                          "content": content]
+        
+        universalRequest(httpMethod: "POST",
+                         url: url,
+                         parameters: parameters) { (response: NewPageResponse) in
+                            print("Response is \(response)")
+        }
+    }
+    
+    /// Edit page
+    /// - Parameters:
+    ///   - query: <PAGE-KEY> : PageDetails.key
+    ///   - title: Page title
+    ///   - content: Page content
+    public func editPage(query: String,
+                         title: String,
+                         content: String) {
+        components.path = "\(APIEndpoints.pages.rawValue)/\(query)"
+        let url = components.url!
+        let parameters = ["token": apiToken,
+                          "authentication": authToken,
+                          "title": title,
+                          "content": content]
+        
+        universalRequest(httpMethod: "PUT",
+                         url: url,
+                         parameters: parameters) { (response: NewPageResponse) in
+                            print("Response is \(response)")
+        }
+    }
+    
+    /// Delete page
+    /// - Parameter query: <PAGE-KEY> : PageDetails.key
+    public func deletePage(query: String) {
+        components.path = "\(APIEndpoints.pages.rawValue)/\(query)"
+        let parameters = ["token": apiToken]
+        let allowedParameters = [
+            URLQueryItem(name: "authentication", value: authToken)
+        ]
+        components.queryItems?.append(contentsOf: allowedParameters)
+        let url = components.url!
+        
+        universalRequest(httpMethod: "DELETE",
+                         url: url,
+                         parameters: parameters) { (response: DeletedPageResponse) in
+                            print("Response is \(response)")
         }
     }
     
     /// List all tags
-    public func listTags(username: String,
-                         password: String) {
+    public func listTags() {
         components.path = APIEndpoints.tags.rawValue
         let url = components.url!
+        let parameters = ["token": apiToken]
         
-        fetchData(url: url,
-                  username: username,
-                  password: password) { (tagsResponse: TagsResponse) in
-                    print("tokenResponse is \(tagsResponse)")
-                    
+        universalRequest(httpMethod: "GET",
+                         url: url,
+                         parameters: parameters) { (response: TagsResponse) in
+                            print("Response is \(response)")
         }
     }
-    
 }
-
-public enum APIEndpoints: String {
-    //fix the slashes in host
-    case pages = "/1/bludit/api/pages"
-    case tags = "/1/bludit/api/tags"
-}
-
-public enum HTTPMethod: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
-}
-

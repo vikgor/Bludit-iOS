@@ -20,26 +20,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Pages:")
-        getPages()
-        print("Tags:")
-        getTags()
+//        bluditAPI.listPages()
+//        bluditAPI.findPage(query: "find-me")
+//        bluditAPI.listTags()
+//        bluditAPI.createPage(title: "delete me",
+//                             content:  "This page will be deleted")
+        
+//        bluditAPI.editPage(query: "find-me",
+//                           title: "Find me (edited)",
+//                           content: "Page found and edited")
+        
+        bluditAPI.deletePage(query: "delete-me")
     }
 
-    
-    func getPages() {
-        let username = ""
-        let password = ""
-        bluditAPI.listPages(username: username,
-                            password: password)
-    }
-    
-    func getTags() {
-        let username = ""
-        let password = ""
-        bluditAPI.listTags(username: username,
-                           password: password)
-    }
-    
 }
 

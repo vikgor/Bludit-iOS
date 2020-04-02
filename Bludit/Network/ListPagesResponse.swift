@@ -11,10 +11,10 @@ import Foundation
 public struct ListPagesResponse: Decodable {
     public let status: String
     public let message: String
-    public let data: [PagesDataResponse]
+    public let data: [PageDetails]
 }
 
-public struct PagesDataResponse: Decodable {
+public struct PageDetails: Decodable {
     public let content: String
     public let contentRaw: String
     public let coverImage: Bool

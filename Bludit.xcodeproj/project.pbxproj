@@ -16,8 +16,13 @@
 		05B00C792435D6D4002D6A11 /* BluditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C782435D6D4002D6A11 /* BluditTests.swift */; };
 		05B00C842435D6D4002D6A11 /* BluditUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C832435D6D4002D6A11 /* BluditUITests.swift */; };
 		05B00C922435D736002D6A11 /* BluditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C912435D736002D6A11 /* BluditAPI.swift */; };
-		05B00C952435D7B5002D6A11 /* PagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C942435D7B5002D6A11 /* PagesResponse.swift */; };
+		05B00C952435D7B5002D6A11 /* ListPagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C942435D7B5002D6A11 /* ListPagesResponse.swift */; };
 		05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C962435E84F002D6A11 /* TagsResponse.swift */; };
+		05B00C9A24363BBC002D6A11 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9924363BBC002D6A11 /* APIEndpoints.swift */; };
+		05B00C9C24363BD0002D6A11 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9B24363BD0002D6A11 /* HTTPMethod.swift */; };
+		05B00C9E243647C0002D6A11 /* NewPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9D243647C0002D6A11 /* NewPageResponse.swift */; };
+		05B00CA024366AC1002D6A11 /* FindPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */; };
+		05B00CA224369D85002D6A11 /* DeletedPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +58,14 @@
 		05B00C832435D6D4002D6A11 /* BluditUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluditUITests.swift; sourceTree = "<group>"; };
 		05B00C852435D6D4002D6A11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05B00C912435D736002D6A11 /* BluditAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluditAPI.swift; sourceTree = "<group>"; };
-		05B00C942435D7B5002D6A11 /* PagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesResponse.swift; sourceTree = "<group>"; };
+		05B00C942435D7B5002D6A11 /* ListPagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPagesResponse.swift; sourceTree = "<group>"; };
 		05B00C962435E84F002D6A11 /* TagsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsResponse.swift; sourceTree = "<group>"; };
+		05B00C9824362087002D6A11 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		05B00C9924363BBC002D6A11 /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		05B00C9B24363BD0002D6A11 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		05B00C9D243647C0002D6A11 /* NewPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageResponse.swift; sourceTree = "<group>"; };
+		05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPageResponse.swift; sourceTree = "<group>"; };
+		05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedPageResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +96,7 @@
 		05B00C552435D6CD002D6A11 = {
 			isa = PBXGroup;
 			children = (
+				05B00C9824362087002D6A11 /* README.md */,
 				05B00C602435D6CD002D6A11 /* Bludit */,
 				05B00C772435D6D4002D6A11 /* BluditTests */,
 				05B00C822435D6D4002D6A11 /* BluditUITests */,
@@ -139,7 +151,12 @@
 			isa = PBXGroup;
 			children = (
 				05B00C912435D736002D6A11 /* BluditAPI.swift */,
-				05B00C942435D7B5002D6A11 /* PagesResponse.swift */,
+				05B00C9924363BBC002D6A11 /* APIEndpoints.swift */,
+				05B00C9B24363BD0002D6A11 /* HTTPMethod.swift */,
+				05B00C942435D7B5002D6A11 /* ListPagesResponse.swift */,
+				05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */,
+				05B00C9D243647C0002D6A11 /* NewPageResponse.swift */,
+				05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */,
 				05B00C962435E84F002D6A11 /* TagsResponse.swift */,
 			);
 			path = Network;
@@ -276,11 +293,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B00CA224369D85002D6A11 /* DeletedPageResponse.swift in Sources */,
+				05B00CA024366AC1002D6A11 /* FindPageResponse.swift in Sources */,
 				05B00C922435D736002D6A11 /* BluditAPI.swift in Sources */,
+				05B00C9E243647C0002D6A11 /* NewPageResponse.swift in Sources */,
+				05B00C9A24363BBC002D6A11 /* APIEndpoints.swift in Sources */,
 				05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */,
 				05B00C662435D6CD002D6A11 /* ViewController.swift in Sources */,
+				05B00C9C24363BD0002D6A11 /* HTTPMethod.swift in Sources */,
 				05B00C622435D6CD002D6A11 /* AppDelegate.swift in Sources */,
-				05B00C952435D7B5002D6A11 /* PagesResponse.swift in Sources */,
+				05B00C952435D7B5002D6A11 /* ListPagesResponse.swift in Sources */,
 				05B00C642435D6CD002D6A11 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,8 +16,8 @@ public struct TagsResponse: Decodable {
 
 public struct TagsDataResponse: Decodable {
     public let name: String
-    public let description: String
-    public let template: String
+//    public let description: String
+//    public let template: String
     public let list: [String]
     public let key: String
 }
