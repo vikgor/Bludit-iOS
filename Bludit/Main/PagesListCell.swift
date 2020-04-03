@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Don't need it for now. If not needed later - delete
 class PagesListCell: UITableViewCell {
 
     @IBOutlet weak var pageLabel: UILabel!

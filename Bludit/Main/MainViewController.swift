@@ -48,7 +48,8 @@ class MainViewController: UIViewController {
     }
     
     func setupTableView() {
-        pagesTable.register(PagesListCell.self, forCellReuseIdentifier: "cellId")
+//        pagesTable.register(PagesListCell.self, forCellReuseIdentifier: "cellId")
+        pagesTable.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         view.addSubview(pagesTable)
         NSLayoutConstraint.activate([
             pagesTable.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -82,10 +83,11 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = pagesTable.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PagesListCell
-    //        cell.textLabel?.text = "test"
-            cell.pageTitle.text = pages?[indexPath.row].title
-            return cell
+//        let cell = pagesTable.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PagesListCell
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
+        cell.textLabel?.text = pages?[indexPath.row].title
+        cell.detailTextLabel?.text = pages?[indexPath.row].content
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -105,6 +107,7 @@ extension MainViewController: UISearchResultsUpdating {
             bluditAPI.findPage(query: text) { foundPageResponse in
                 self.pages = Array(arrayLiteral: foundPageResponse!.data)
                 self.setupTableView()
+                self.pagesTable.reloadData()
             }
         }
         else {
