@@ -77,8 +77,8 @@ class BluditAPI {
             
             do {
                 // 2 next lines are used for debugging, delete later
-                let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                print(json)
+//                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+//                print(json)
                 let content = try self.jsonDecoder.decode(T.self, from: data!)
                 DispatchQueue.main.async {
                     completion(content)
@@ -90,7 +90,7 @@ class BluditAPI {
     }
     
     /// List all pages (15 pages by default)
-    public func listPages() {
+    public func listPages(completion: @escaping (ListPagesResponse?) -> Void) {
         components.path = APIEndpoints.pages.rawValue
         let parameters = ["token": apiToken]
         let allowedParameters = [
@@ -106,7 +106,8 @@ class BluditAPI {
         universalRequest(httpMethod: "GET",
                          url: url,
                          parameters: parameters) { (response: ListPagesResponse) in
-                            print("Response is \(response)")
+//                            print("Response is \(response)")
+                            completion(response)
         }
     }
     
@@ -196,4 +197,17 @@ class BluditAPI {
                             print("Response is \(response)")
         }
     }
+    
+    /// List all categories
+       public func listCategories() {
+           components.path = APIEndpoints.categories.rawValue
+           let url = components.url!
+           let parameters = ["token": apiToken]
+           
+           universalRequest(httpMethod: "GET",
+                            url: url,
+                            parameters: parameters) { (response: TagsResponse) in
+                               print("Response is \(response)")
+           }
+       }
 }

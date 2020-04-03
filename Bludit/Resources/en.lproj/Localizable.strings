@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Bludit
+
+  Created by Viktor Gordienko on 4/3/20.
+  Copyright © 2020 Viktor Gordienko. All rights reserved.
+*/
+
+// MARK: - Login
+"welcomeTextLabel" = "Welcome!";
+"websiteTextFiledPlaceholder" = "Website";
+"tokenTextFiledPlaceholder" = "API Token";
+"loginButton" = "Log in";
+
+// MARK: - Main
+"pages" = "Pages";
+"drafts" = "Drafts";
+"profile" = "Profile";
+
