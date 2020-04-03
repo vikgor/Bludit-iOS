@@ -34,6 +34,7 @@
 		05B00CE124373D7D002D6A11 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CE024373D7D002D6A11 /* LoginViewController.xib */; };
 		05B00CF1243778A4002D6A11 /* PagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CEF243778A4002D6A11 /* PagesListCell.swift */; };
 		05B00CF2243778A4002D6A11 /* PagesListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CF0243778A4002D6A11 /* PagesListCell.xib */; };
+		05B00CF42437E284002D6A11 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CF32437E284002D6A11 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		05B00CE024373D7D002D6A11 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		05B00CEF243778A4002D6A11 /* PagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesListCell.swift; sourceTree = "<group>"; };
 		05B00CF0243778A4002D6A11 /* PagesListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesListCell.xib; sourceTree = "<group>"; };
+		05B00CF32437E284002D6A11 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				05B00C9D243647C0002D6A11 /* NewPageResponse.swift */,
 				05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */,
 				05B00C962435E84F002D6A11 /* TagsResponse.swift */,
+				05B00CF32437E284002D6A11 /* StringExtension.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				05B00C9E243647C0002D6A11 /* NewPageResponse.swift in Sources */,
 				05B00CC7243739C8002D6A11 /* TabBarViewController.swift in Sources */,
 				05B00C9A24363BBC002D6A11 /* APIEndpoints.swift in Sources */,
+				05B00CF42437E284002D6A11 /* StringExtension.swift in Sources */,
 				05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */,
 				05B00C662435D6CD002D6A11 /* LoginViewController.swift in Sources */,
 				05B00C9C24363BD0002D6A11 /* HTTPMethod.swift in Sources */,

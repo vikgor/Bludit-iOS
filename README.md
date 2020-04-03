@@ -13,6 +13,7 @@ TODO:
     - [x] Get pages/tags (GET)
         - [x] published/sticky/static/draft/untagged
         - [x] Get pages/tags by key
+            - [ ] Fix query from "This example" to "this-example"
     - [x] Create new page (POST)
     - [x] Edit page (PUT)
     - [x] Delete page (DELETE)

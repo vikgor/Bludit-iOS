@@ -19,20 +19,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        bluditAPI.listPages()
-//        bluditAPI.findPage(query: "find-me")
-//        bluditAPI.listTags()
-//        bluditAPI.listCategories()
-//        bluditAPI.createPage(title: "delete me",
-//                             content:  "This page will be deleted")
-//        bluditAPI.editPage(query: "find-me",
-//                           title: "Find me (edited)",
-//                           content: "Page found and edited")
-//        bluditAPI.deletePage(query: "find-me")
         loginButton.addTarget(self,
                               action: #selector(authenticate),
                               for: UIControl.Event.touchUpInside)
+        testRequests()
     }
 
     @objc func authenticate() {
@@ -45,6 +35,23 @@ class LoginViewController: UIViewController {
             newViewController.modalPresentationStyle = .fullScreen
             self.present(newViewController, animated: true)
         }
+    }
+    
+    /// Testing basic requests. Need it before I make a mock server and test everything properly
+    func testRequests() {
+//        bluditAPI.listPages() { listPagesResponse in print(listPagesResponse as Any) }
+//        bluditAPI.findPage(query: "An") { foundPageResponse in print(foundPageResponse) }
+//        bluditAPI.findPage(query: "Anot") { foundPageResponse in print(foundPageResponse) }
+//        bluditAPI.findPage(query: "Another") { foundPageResponse in print(foundPageResponse) }
+//        bluditAPI.findPage(query: "another") { foundPageResponse in print(foundPageResponse) }
+//        bluditAPI.listTags()
+//        bluditAPI.listCategories()
+//        bluditAPI.createPage(title: "delete me",
+//                             content:  "This page will be deleted")
+//        bluditAPI.editPage(query: "find-me",
+//                           title: "Find me (edited)",
+//                           content: "Page found and edited")
+//        bluditAPI.deletePage(query: "find-me")
     }
 }
 

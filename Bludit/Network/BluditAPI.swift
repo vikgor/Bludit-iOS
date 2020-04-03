@@ -30,6 +30,11 @@ class BluditAPI {
     }
     
     /// Generic API request
+    /// - Parameters:
+    ///   - httpMethod: GET/POST/PUT/DELETE
+    ///   - url: request url
+    ///   - parameters: parameters for the body (POST/PUT)
+    ///   - completion: completion
     private func universalRequest<T: Decodable> (httpMethod: String,
                                                  url: URL,
                                                  parameters: [String : String],
@@ -106,22 +111,22 @@ class BluditAPI {
         universalRequest(httpMethod: "GET",
                          url: url,
                          parameters: parameters) { (response: ListPagesResponse) in
-//                            print("Response is \(response)")
                             completion(response)
         }
     }
     
     /// Find a particular page
     /// - Parameter query: <PAGE-KEY> : PageDetails.key
-    public func findPage(query: String) {
-        components.path = "\(APIEndpoints.pages.rawValue)/\(query)"
+    public func findPage(query: String,
+                         completion: @escaping (FindPageResponse?) -> Void) {
+        components.path = "\(APIEndpoints.pages.rawValue)/\(query.convertedForTheAPIRequest)"
         let parameters = ["token": apiToken]
         let url = components.url!
         
         universalRequest(httpMethod: "GET",
                          url: url,
                          parameters: parameters) { (response: FindPageResponse) in
-                            print("Response is \(response)")
+                            completion(response)
         }
     }
     

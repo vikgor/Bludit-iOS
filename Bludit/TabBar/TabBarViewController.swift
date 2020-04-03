@@ -35,10 +35,6 @@ class TabBarViewController: UITabBarController {
         guard let image = image else { return navController }
         navController.tabBarItem.image = image
         navController.tabBarItem.accessibilityIdentifier = title
-        
-//        navController.title = "Title"
-//        navController.navigationItem.title = "asd"
-        
         return navController
     }
 
