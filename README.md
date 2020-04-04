@@ -13,7 +13,7 @@ TODO:
     - [x] Get pages/tags (GET)
         - [x] published/sticky/static/draft/untagged
         - [x] Get pages/tags by key
-            - [ ] Fix query from "This example" to "this-example"
+            - [x] Fix query from "This example" to "this-example"
     - [x] Create new page (POST)
     - [x] Edit page (PUT)
     - [x] Delete page (DELETE)
@@ -28,8 +28,10 @@ TODO:
         - [ ] Show new VC with selected page on tap
     - [ ] Check/uncheck published/sticky/static/draft/untagged
     - [ ] Request a particular page
+        - [ ] Fix deleting the found page
     - [ ] Create a new page
         - [ ] Design editing
+        - [ ] Add a send button on the right like in Mail and Messages apps
     - [ ] Edit a page
     - [ ] Delete a page
         - [x] Swipe to delete

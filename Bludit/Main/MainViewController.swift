@@ -24,20 +24,19 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         loadPages()
         
-        setUpNavigation()
-        setUpSearchbar()
+        setupNavigation()
+        setupSearchbar()
         setupPagesTable()
     }
     
     //MARK: - Set up UI
-    func setUpNavigation() {
+    func setupNavigation() {
         self.navigationItem.title = "Pages"
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createPage))
         navigationItem.rightBarButtonItems = [add]
     }
     
-    func setUpSearchbar() {
+    func setupSearchbar() {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
         self.navigationItem.searchController = search
@@ -50,7 +49,6 @@ class MainViewController: UIViewController {
     }
     
     func setupTableView() {
-//        pagesTable.register(PagesListCell.self, forCellReuseIdentifier: "cellId")
         pagesTable.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         view.addSubview(pagesTable)
         NSLayoutConstraint.activate([
@@ -92,21 +90,10 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = pagesTable.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PagesListCell
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
         cell.textLabel?.text = pages?[indexPath.row].title
-        cell.detailTextLabel?.text = pages?[indexPath.row].content
-        
-//        cell.accessoryType = .detailDisclosureButton
-        
+        cell.detailTextLabel?.text = pages?[indexPath.row].contentRaw
         cell.accessoryType = .disclosureIndicator
-        
-//        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 21))
-//        label.textAlignment = .right;
-//        label.clipsToBounds = true
-//        label.autoresizesSubviews = true
-//        label.text = "123";
-//        cell.accessoryView = label
         return cell
     }
     
@@ -119,13 +106,12 @@ extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         pagesTable.deselectRow(at: indexPath, animated: true)
-        print("tapped row \(indexPath.row)")
+        print("Page selected: \(String(describing: pages?[indexPath.row].title))")
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         print("Tapped accessory button at row \(indexPath.row)")
     }
-    
     
     /// Editing the table view. Swipe to delete or adit a page.
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
