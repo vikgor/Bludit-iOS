@@ -24,7 +24,7 @@ TODO:
     - [ ] Show Main VC
 - [ ] Main VC
     - [ ] Table with the last 15 published pages
-        - [ ] Show title + contents
+        - [x] Show title + contents
         - [ ] Show new VC with selected page on tap
     - [ ] Check/uncheck published/sticky/static/draft/untagged
     - [ ] Request a particular page
@@ -32,7 +32,7 @@ TODO:
         - [ ] Design editing
     - [ ] Edit a page
     - [ ] Delete a page
-        - [ ] Swipe to delete
+        - [x] Swipe to delete
         - [ ] Edit table to delete
 - [ ] Profile view
     - [ ] Edit api token, auth token

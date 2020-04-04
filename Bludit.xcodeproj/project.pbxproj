@@ -35,6 +35,8 @@
 		05B00CF1243778A4002D6A11 /* PagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CEF243778A4002D6A11 /* PagesListCell.swift */; };
 		05B00CF2243778A4002D6A11 /* PagesListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CF0243778A4002D6A11 /* PagesListCell.xib */; };
 		05B00CF42437E284002D6A11 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CF32437E284002D6A11 /* StringExtension.swift */; };
+		05B00CF82438DCAC002D6A11 /* CreateNewPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CF62438DCAB002D6A11 /* CreateNewPageViewController.swift */; };
+		05B00CF92438DCAC002D6A11 /* CreateNewPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CF72438DCAB002D6A11 /* CreateNewPageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		05B00CEF243778A4002D6A11 /* PagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesListCell.swift; sourceTree = "<group>"; };
 		05B00CF0243778A4002D6A11 /* PagesListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesListCell.xib; sourceTree = "<group>"; };
 		05B00CF32437E284002D6A11 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		05B00CF62438DCAB002D6A11 /* CreateNewPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPageViewController.swift; sourceTree = "<group>"; };
+		05B00CF72438DCAB002D6A11 /* CreateNewPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNewPageViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 				05B00CB424373237002D6A11 /* Login */,
 				05B00CE22437419C002D6A11 /* TabBar */,
 				05B00CA724372F58002D6A11 /* Main */,
+				05B00CF52438DC60002D6A11 /* CreateNewPage */,
 				05B00CC924373A4F002D6A11 /* Drafts */,
 				05B00CCA24373A5D002D6A11 /* Profile */,
 				05B00C932435D789002D6A11 /* Network */,
@@ -256,6 +261,15 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		05B00CF52438DC60002D6A11 /* CreateNewPage */ = {
+			isa = PBXGroup;
+			children = (
+				05B00CF62438DCAB002D6A11 /* CreateNewPageViewController.swift */,
+				05B00CF72438DCAB002D6A11 /* CreateNewPageViewController.xib */,
+			);
+			path = CreateNewPage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -361,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B00CF92438DCAC002D6A11 /* CreateNewPageViewController.xib in Resources */,
 				05B00CD624373AA7002D6A11 /* ProfileViewController.xib in Resources */,
 				05B00CC8243739C8002D6A11 /* TabBarViewController.xib in Resources */,
 				05B00C6E2435D6D4002D6A11 /* LaunchScreen.storyboard in Resources */,
@@ -394,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B00CF82438DCAC002D6A11 /* CreateNewPageViewController.swift in Sources */,
 				05B00CA224369D85002D6A11 /* DeletedPageResponse.swift in Sources */,
 				05B00CF1243778A4002D6A11 /* PagesListCell.swift in Sources */,
 				05B00CCD24373A85002D6A11 /* MainViewController.swift in Sources */,
