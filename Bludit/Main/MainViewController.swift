@@ -107,6 +107,15 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         pagesTable.deselectRow(at: indexPath, animated: true)
         print("Page selected: \(String(describing: pages?[indexPath.row].title))")
+        
+        DispatchQueue.main.async {
+            let destination = PageContentsViewController()
+            destination.pageTitle = self.pages?[indexPath.row].title
+            destination.pageTags = self.pages?[indexPath.row].tags
+            destination.pageContents = self.pages?[indexPath.row].contentRaw
+            self.navigationController?.pushViewController(destination, animated: true)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {

@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct TagsResponse: Decodable {
+public struct TagsResponse: Codable {
     public let status: String
     public let message: String
     public let data: [TagsDataResponse]
 }
 
-public struct TagsDataResponse: Decodable {
+public struct TagsDataResponse: Codable {
     public let name: String
 //    public let description: String
 //    public let template: String

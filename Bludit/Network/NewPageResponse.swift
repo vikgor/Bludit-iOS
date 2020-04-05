@@ -8,12 +8,12 @@
 
 import Foundation
 
-public struct NewPageResponse: Decodable {
+public struct NewPageResponse: Codable {
     public let status: String
     public let message: String
     public let data: NewPageDetails
 }
 
-public struct NewPageDetails: Decodable {
+public struct NewPageDetails: Codable {
     public let key: String
 }

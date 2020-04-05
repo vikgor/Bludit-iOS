@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct ListPagesResponse: Decodable {
+public struct ListPagesResponse: Codable {
     public let status: String
     public let message: String
     public let data: [PageDetails]
 }
 
-public struct PageDetails: Decodable {
+public struct PageDetails: Codable {
 //    public let category: String
     public let content: String
     public let contentRaw: String

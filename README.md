@@ -25,16 +25,29 @@ TODO:
 - [ ] Main VC
     - [ ] Table with the last 15 published pages
         - [x] Show title + contents
-        - [ ] Show new VC with selected page on tap
+        - [x] Show new VC with selected page on tap
+        - [ ] Shoåw all the pages instead of last 10
     - [ ] Check/uncheck published/sticky/static/draft/untagged
     - [ ] Request a particular page
         - [ ] Fix deleting the found page
     - [ ] Create a new page
         - [ ] Design editing
         - [ ] Add a send button on the right like in Mail and Messages apps
+        - [ ] Change title dynamically from pageTitleTextField (like Mail app)
+        - [ ] If either of the fields is empty, on send the post show alert with promt (Go back/Cancel) d
+        - [ ] If either of the fields is not empty, on the cancellaion show Action Sheet (Delete/Save draft)
+        - [ ] Fix the automatic heights
+        - [ ] Clean the code for create()
     - [ ] Edit a page
     - [ ] Delete a page
         - [x] Swipe to delete
         - [ ] Edit table to delete
+- [ ] Page view
+    - [ ] Make label fit the screen somehow
+    - [ ] Pass data from table view more elegantly
+    - [ ] Show cover image if it's set up for the page
+        - [ ] Probably need to fix the API Client
+    - [ ] Scroll all page, not only textView
+    - [ ] Encode HTML text 
 - [ ] Profile view
     - [ ] Edit api token, auth token

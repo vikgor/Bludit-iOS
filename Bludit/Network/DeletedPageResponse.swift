@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct DeletedPageResponse: Decodable {
+public struct DeletedPageResponse: Codable {
     public let status: String
     public let message: String
 }

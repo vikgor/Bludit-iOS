@@ -35,7 +35,7 @@ class BluditAPI {
     ///   - url: request url
     ///   - parameters: parameters for the body (POST/PUT)
     ///   - completion: completion
-    private func universalRequest<T: Decodable> (httpMethod: String,
+    private func universalRequest<T: Codable> (httpMethod: String,
                                                  url: URL,
                                                  parameters: [String : String],
                                                  completion: @escaping (T) -> Void ) {
@@ -133,14 +133,17 @@ class BluditAPI {
     /// Create new page
     /// - Parameters:
     ///   - title: Page title
+    ///   - tags: Page tags, separated by comma
     ///   - content: Page content
     public func createPage(title: String,
+                           tags: String,
                            content: String) {
         components.path = APIEndpoints.pages.rawValue
         let url = components.url!
         let parameters = ["token": apiToken,
                           "authentication": authToken,
                           "title": title,
+                          "tags": tags,
                           "content": content]
         
         universalRequest(httpMethod: "POST",
