@@ -26,18 +26,19 @@ TODO:
     - [ ] Table with the last 15 published pages
         - [x] Show title + contents
         - [x] Show new VC with selected page on tap
-        - [ ] Shoåw all the pages instead of last 10
+        - [ ] Show all the pages instead of last 10
+        - [ ] Fix refreshing (it needs to be refreshed twice before reloading the table after creating the page)
     - [ ] Check/uncheck published/sticky/static/draft/untagged
     - [ ] Request a particular page
         - [ ] Fix deleting the found page
     - [ ] Create a new page
-        - [ ] Design editing
+        - [x] Design editing
         - [ ] Add a send button on the right like in Mail and Messages apps
         - [ ] Change title dynamically from pageTitleTextField (like Mail app)
-        - [ ] If either of the fields is empty, on send the post show alert with promt (Go back/Cancel) d
-        - [ ] If either of the fields is not empty, on the cancellaion show Action Sheet (Delete/Save draft)
+        - [x] If either of the fields is empty, on send the post show alert with promt (Go back/Cancel) d
+        - [x] If either of the fields is not empty, on the cancellaion show Action Sheet (Delete/Save draft)
         - [ ] Fix the automatic heights
-        - [ ] Clean the code for create()
+        - [x] Clean the code for create()
     - [ ] Edit a page
     - [ ] Delete a page
         - [x] Swipe to delete

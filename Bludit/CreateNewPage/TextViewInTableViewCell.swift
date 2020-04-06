@@ -39,7 +39,7 @@ class TextViewInTableViewCell: UITableViewCell {
         let pageContentsTextView = UITextView()
         pageContentsTextView.isScrollEnabled = true
         pageContentsTextView.font = UIFont.systemFont(ofSize: 16)
-        pageContentsTextView.text = "Page contents"
+        pageContentsTextView.text = ""
         stackView.addArrangedSubview(pageContentsTextView)
         self.textView = pageContentsTextView
         

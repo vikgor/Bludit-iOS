@@ -137,14 +137,16 @@ class BluditAPI {
     ///   - content: Page content
     public func createPage(title: String,
                            tags: String,
-                           content: String) {
+                           content: String,
+                           type: String) {
         components.path = APIEndpoints.pages.rawValue
         let url = components.url!
         let parameters = ["token": apiToken,
                           "authentication": authToken,
                           "title": title,
                           "tags": tags,
-                          "content": content]
+                          "content": content,
+                          "type": type]
         
         universalRequest(httpMethod: "POST",
                          url: url,
