@@ -12,6 +12,7 @@ TODO:
 - [ ] API Client
     - [ ] Fix case when host name includes slashes (e.g. CMS is located at "website.com/blog" instead of "website.com")
 - [ ] Authenticate
+    - [ ] Move view up when keyboard is presented
     - [ ] Type website name + API Token
     - [ ] Save them in UserDefaults, for now
     - [ ] Show Main VC
