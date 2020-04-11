@@ -48,6 +48,7 @@ class TextFieldInTableViewCell: UITableViewCell {
         textField.placeholder = placeholder
         textField.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
         stackView.addArrangedSubview(textField)
+        textField.autocapitalizationType = .none
         textField.addTarget(self, action: #selector(textFieldValueChanged(_:)), for: .editingChanged)
         textField.addTarget(self, action: #selector(editingDidBegin), for: .editingDidBegin)
         self.textField = textField
@@ -72,7 +73,10 @@ extension TextFieldInTableViewCell {
     @objc func didSelectCell() { textField?.becomeFirstResponder() }
     @objc func editingDidBegin() { delegate?.textField(editingDidBeginIn: self) }
     @objc func textFieldValueChanged(_ sender: UITextField) {
-        if let text = sender.text { delegate?.textField(editingChangedInTextField: text, in: self) }
+        if let text = sender.text {
+            delegate?.textField(editingChangedInTextField: text, in: self)
+//            print(text)
+        }
     }
 }
 

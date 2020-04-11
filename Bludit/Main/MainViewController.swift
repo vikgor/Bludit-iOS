@@ -30,25 +30,25 @@ class MainViewController: UIViewController {
     }
     
     //MARK: - Set up UI
-    func setupNavigation() {
+    private func setupNavigation() {
         self.navigationItem.title = "Pages"
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createPage))
         navigationItem.rightBarButtonItems = [add]
     }
     
-    func setupSearchbar() {
+    private func setupSearchbar() {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
         self.navigationItem.searchController = search
     }
     
-    func setupPagesTable() {
+    private func setupPagesTable() {
         pagesTable.delegate = self
         pagesTable.dataSource = self
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         pagesTable.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         view.addSubview(pagesTable)
         NSLayoutConstraint.activate([
@@ -67,21 +67,56 @@ class MainViewController: UIViewController {
         pagesTable.refreshControl?.endRefreshing()
     }
     
-    func loadPages() {
-        bluditAPI.listPages() { listPagesResponse in
-            self.pages = listPagesResponse?.data
-            self.setupTableView()
-        }
-    }
-    
-    @objc func createPage() {
+    @objc private func createPage() {
         DispatchQueue.main.async {
             let navController = UINavigationController(rootViewController: CreateNewPageViewController())
             self.navigationController?.present(navController, animated: true, completion: nil)
         }
     }
+    
+    private func loadPages() {
+        bluditAPI.listPages(pageNumber: 1) { listPagesResponse in
+            self.pages = listPagesResponse?.data
+            self.setupTableView()
+        }
+    }
+    
+    
+//    var isLoading = false
+    var pageIndex = 2
 
-}
+    
+    // WORKING ON THIS
+    
+    
+//    private func loadMore() {
+//        if !isLoading {
+//            isLoading = true
+//            DispatchQueue.global().async {
+//                self.bluditAPI.listPages(pageNumber: self.pageIndex) { listPagesResponse in
+//                    if let newPages = listPagesResponse?.data {
+//                        self.pages?.append(contentsOf: newPages)
+//                    }
+//                    self.pageIndex += 1
+//                    self.pagesTable.reloadData()
+//                    self.isLoading = false
+//                }
+//            }
+//        }
+//    }
+    
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//            let offsetY = scrollView.contentOffset.y
+//            let contentHeight = scrollView.contentSize.height
+//
+//            if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoading {
+//                loadMore()
+//            }
+//        }
+
+    }
+
 
 extension MainViewController: UITableViewDataSource {
     
@@ -92,14 +127,15 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
         cell.textLabel?.text = pages?[indexPath.row].title
-        cell.detailTextLabel?.text = pages?[indexPath.row].contentRaw
+        let content = pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        cell.detailTextLabel?.text = content
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100
+//    }
 }
 
 extension MainViewController: UITableViewDelegate {
@@ -112,7 +148,9 @@ extension MainViewController: UITableViewDelegate {
             let destination = PageContentsViewController()
             destination.pageTitle = self.pages?[indexPath.row].title
             destination.pageTags = self.pages?[indexPath.row].tags
-            destination.pageContents = self.pages?[indexPath.row].contentRaw
+//            destination.pageContents = self.pages?[indexPath.row].contentRaw.htmlAttributedString?.string
+            let content = self.pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+            destination.pageContents = content
             self.navigationController?.pushViewController(destination, animated: true)
         }
         

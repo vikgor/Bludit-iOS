@@ -37,7 +37,7 @@ class BluditAPI {
     ///   - completion: completion
     private func universalRequest<T: Codable> (httpMethod: String,
                                                  url: URL,
-                                                 parameters: [String : String],
+                                                 parameters: [String: String],
                                                  completion: @escaping (T) -> Void ) {
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: .main)
         var request = URLRequest(url: url)
@@ -95,7 +95,8 @@ class BluditAPI {
     }
     
     /// List all pages (15 pages by default)
-    public func listPages(completion: @escaping (ListPagesResponse?) -> Void) {
+    public func listPages(pageNumber: Int,
+                          completion: @escaping (ListPagesResponse?) -> Void) {
         components.path = APIEndpoints.pages.rawValue
         let parameters = ["token": apiToken]
         let allowedParameters = [
@@ -103,7 +104,9 @@ class BluditAPI {
             URLQueryItem(name: "sticky", value: "false"),
             URLQueryItem(name: "static", value: "false"),
             URLQueryItem(name: "draft", value: "false"),
-            URLQueryItem(name: "untagged", value: "false")
+            URLQueryItem(name: "untagged", value: "false"),
+            URLQueryItem(name: "numberOfItems", value: "30"),
+            URLQueryItem(name: "pageNumber", value: "\(pageNumber)")
         ]
         components.queryItems?.append(contentsOf: allowedParameters)
         let url = components.url!

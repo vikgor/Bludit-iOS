@@ -13,12 +13,12 @@ class PageContentsViewController: UIViewController {
     var pageTitle: String? = "title"
     var pageTags: String? = "tags"
     var pageContents: String? = "contents"
+    var coverImage: String = "logo"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavigation()
-        setupStackView()
+        setupContentView()
     }
     
     //MARK: - Set up UI
@@ -28,14 +28,18 @@ class PageContentsViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
         
-    private func setupStackView() {
+    private func setupContentView() {
         
         ///Page cover image
-        let coverImage = UIImageView()
-        coverImage.backgroundColor = UIColor.lightGray
-        coverImage.heightAnchor.constraint(equalToConstant: 120.0).isActive = true
-        coverImage.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
-        coverImage.image = UIImage(named: "imageName")
+        ///If  cover image is not set up for the page, don't show the view. Otherwise take the URL from the page details
+        let coverImageView = UIImageView()
+        if coverImage != "" {
+            coverImageView.image = UIImage(named: coverImage)
+            coverImageView.backgroundColor = UIColor.systemBackground
+            coverImageView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+            coverImageView.contentMode = .scaleAspectFill
+            coverImageView.clipsToBounds = true
+        }
         
         ///Page tags
         let tagsLabel = UILabel()
@@ -45,7 +49,7 @@ class PageContentsViewController: UIViewController {
         
         ///Page contents
         let pageContentsTextView = UITextView()
-        pageContentsTextView.isScrollEnabled = true
+        pageContentsTextView.isScrollEnabled = false
         pageContentsTextView.font = UIFont.systemFont(ofSize: 16)
         pageContentsTextView.isEditable = false
         pageContentsTextView.isSelectable = true
@@ -53,26 +57,38 @@ class PageContentsViewController: UIViewController {
         
         ///Stack View
         let stackView = UIStackView()
-        stackView.axis = NSLayoutConstraint.Axis.vertical
-        stackView.distribution = UIStackView.Distribution.equalSpacing
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
         stackView.spacing = 16.0
-        stackView.addArrangedSubview(coverImage)
+        stackView.addArrangedSubview(coverImageView)
         stackView.addArrangedSubview(tagsLabel)
         stackView.addArrangedSubview(pageContentsTextView)
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(stackView)
+        ///Scroll View
+        let scrollView = UIScrollView()
+        scrollView.addSubview(stackView)
+        view.addSubview(scrollView)
         
         ///Constraints
         let margins = view.layoutMarginsGuide
+        
+        ///Stack view constraints
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: margins.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            tagsLabel.widthAnchor.constraint(equalToConstant: self.view.frame.width),
-            tagsLabel.heightAnchor.constraint(equalToConstant: 20.0),
-            pageContentsTextView.topAnchor.constraint(equalTo: tagsLabel.bottomAnchor),
-            pageContentsTextView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+                
+        ///Scroll view constraints
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: margins.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])
     }
 
