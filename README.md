@@ -11,11 +11,10 @@ Users - Admin user - Security
 TODO:
 - [ ] API Client
     - [ ] Fix case when host name includes slashes (e.g. CMS is located at "website.com/blog" instead of "website.com")
+    - [ ] Fix optional image in PageDetails
 - [ ] Authenticate
     - [ ] Move view up when keyboard is presented
-    - [ ] Type website name + API Token
-    - [ ] Save them in UserDefaults, for now
-    - [ ] Show Main VC
+    - [ ] Decide when to ask for an auth key
 - [ ] Main VC
     - [ ] Table with the last 15 published pages
         - [ ] Show 10 last pages, then on bottom scroll show 10 more and so on

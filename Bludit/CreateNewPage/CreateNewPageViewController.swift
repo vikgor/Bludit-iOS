@@ -81,7 +81,7 @@ class CreateNewPageViewController: UIViewController {
         alertController.addAction(deleteButton)
         alertController.addAction(sendButton)
         alertController.addAction(cancelButton)
-        self.navigationController!.present(alertController, animated: true, completion: nil)
+        self.navigationController?.present(alertController, animated: true, completion: nil)
     }
 
     private func showActionSheetForCreate() {
@@ -99,7 +99,7 @@ class CreateNewPageViewController: UIViewController {
         alertController.addAction(createButton)
         alertController.addAction(sendButton)
         alertController.addAction(cancelButton)
-        self.navigationController!.present(alertController, animated: true, completion: nil)
+        self.navigationController?.present(alertController, animated: true, completion: nil)
     }
 
     ///Check if both the title and contents is empty

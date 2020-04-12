@@ -105,7 +105,7 @@ class BluditAPI {
             URLQueryItem(name: "static", value: "false"),
             URLQueryItem(name: "draft", value: "false"),
             URLQueryItem(name: "untagged", value: "false"),
-            URLQueryItem(name: "numberOfItems", value: "30"),
+//            URLQueryItem(name: "numberOfItems", value: "30"),
             URLQueryItem(name: "pageNumber", value: "\(pageNumber)")
         ]
         components.queryItems?.append(contentsOf: allowedParameters)

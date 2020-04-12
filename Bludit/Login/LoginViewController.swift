@@ -11,6 +11,9 @@ import UIKit
 class LoginViewController: UIViewController {
     
     let bluditAPI = BluditAPI()
+    var websiteTextField = UITextField()
+    var apiTokenTextField = UITextField()
+    var loginButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,15 +34,23 @@ class LoginViewController: UIViewController {
         let websiteTextField = UITextField()
         websiteTextField.textAlignment = .left
         websiteTextField.autocapitalizationType = .none
+        websiteTextField.delegate = self
+        websiteTextField.tag = 0
+        websiteTextField.returnKeyType = .next
         websiteTextField.placeholder = "Website"
         websiteTextField.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+        self.websiteTextField = websiteTextField
         
         /// API Token text field
         let apiTokenTextField = UITextField()
         apiTokenTextField.textAlignment = .left
         apiTokenTextField.autocapitalizationType = .none
+        apiTokenTextField.delegate = self
+        apiTokenTextField.tag = 1
+        apiTokenTextField.returnKeyType = .done
         apiTokenTextField.placeholder = "API Token"
         apiTokenTextField.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+        self.apiTokenTextField = apiTokenTextField
         
         /// Login button
         let loginButton = UIButton()
@@ -50,6 +61,9 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self,
                               action: #selector(authenticate),
                               for: UIControl.Event.touchUpInside)
+//        loginButton.isEnabled = false
+        loginButton.alpha = 0.5
+        self.loginButton = loginButton
         
         ///Stack view
         let stackView = UIStackView()
@@ -79,6 +93,9 @@ class LoginViewController: UIViewController {
     }
 
     @objc func authenticate() {
+        let defaults = UserDefaults.standard
+        defaults.set(websiteTextField.text, forKey: "website")
+        defaults.set(apiTokenTextField.text, forKey: "token")
         showNextScreen()
     }
     
@@ -109,4 +126,26 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            authenticate()
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if websiteTextField.text == "" || apiTokenTextField.text == "" {
+            //Disable button
+            loginButton.isEnabled = false
+            loginButton.alpha = 0.5
+        } else {
+            //Enable button
+            loginButton.isEnabled = true
+            loginButton.alpha = 1.0
+        }
+    }
 }

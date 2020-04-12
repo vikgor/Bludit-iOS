@@ -33,7 +33,6 @@
 		05B00CDB24373B42002D6A11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CDD24373B42002D6A11 /* Localizable.strings */; };
 		05B00CE124373D7D002D6A11 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CE024373D7D002D6A11 /* LoginViewController.xib */; };
 		05B00CF1243778A4002D6A11 /* PagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CEF243778A4002D6A11 /* PagesListCell.swift */; };
-		05B00CF2243778A4002D6A11 /* PagesListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CF0243778A4002D6A11 /* PagesListCell.xib */; };
 		05B00CF42437E284002D6A11 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CF32437E284002D6A11 /* StringExtension.swift */; };
 		05B00CF82438DCAC002D6A11 /* CreateNewPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CF62438DCAB002D6A11 /* CreateNewPageViewController.swift */; };
 		05B00CF92438DCAC002D6A11 /* CreateNewPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CF72438DCAB002D6A11 /* CreateNewPageViewController.xib */; };
@@ -95,7 +94,6 @@
 		05B00CDE24373B44002D6A11 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05B00CE024373D7D002D6A11 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		05B00CEF243778A4002D6A11 /* PagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesListCell.swift; sourceTree = "<group>"; };
-		05B00CF0243778A4002D6A11 /* PagesListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesListCell.xib; sourceTree = "<group>"; };
 		05B00CF32437E284002D6A11 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		05B00CF62438DCAB002D6A11 /* CreateNewPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPageViewController.swift; sourceTree = "<group>"; };
 		05B00CF72438DCAB002D6A11 /* CreateNewPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNewPageViewController.xib; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 				05B00CCB24373A85002D6A11 /* MainViewController.swift */,
 				05B00CCC24373A85002D6A11 /* MainViewController.xib */,
 				05B00CEF243778A4002D6A11 /* PagesListCell.swift */,
-				05B00CF0243778A4002D6A11 /* PagesListCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -398,7 +395,6 @@
 				05B00C6E2435D6D4002D6A11 /* LaunchScreen.storyboard in Resources */,
 				05B00CD224373A9E002D6A11 /* DraftsViewController.xib in Resources */,
 				05B00CCE24373A85002D6A11 /* MainViewController.xib in Resources */,
-				05B00CF2243778A4002D6A11 /* PagesListCell.xib in Resources */,
 				05B00CDB24373B42002D6A11 /* Localizable.strings in Resources */,
 				05B00C6B2435D6D3002D6A11 /* Assets.xcassets in Resources */,
 				05B00CE124373D7D002D6A11 /* LoginViewController.xib in Resources */,

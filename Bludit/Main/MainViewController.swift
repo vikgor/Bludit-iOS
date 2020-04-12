@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     private let bluditAPI = BluditAPI()
     private var pages: [PageDetails]?
     private let refreshControl = UIRefreshControl()
+    private var indicator = UIActivityIndicatorView()
 
     let pagesTable: UITableView = {
         let pages = UITableView()
@@ -22,14 +23,24 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadPages()
-        
+        setupActivityIndicator()
+        indicator.startAnimating()
         setupNavigation()
         setupSearchbar()
         setupPagesTable()
+        loadPages()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        pagesTable.refreshControl = refreshControl
     }
     
     //MARK: - Set up UI
+    private func setupActivityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        indicator.style = .medium
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+    }
+    
     private func setupNavigation() {
         self.navigationItem.title = "Pages"
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createPage))
@@ -45,7 +56,6 @@ class MainViewController: UIViewController {
     private func setupPagesTable() {
         pagesTable.delegate = self
         pagesTable.dataSource = self
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
     private func setupTableView() {
@@ -57,7 +67,6 @@ class MainViewController: UIViewController {
             pagesTable.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             pagesTable.leftAnchor.constraint(equalTo: self.view.leftAnchor)
         ])
-        pagesTable.refreshControl = refreshControl
     }
     
     @objc func refresh(sender: AnyObject) {
@@ -78,17 +87,25 @@ class MainViewController: UIViewController {
         bluditAPI.listPages(pageNumber: 1) { listPagesResponse in
             self.pages = listPagesResponse?.data
             self.setupTableView()
+            self.indicator.removeFromSuperview()
         }
     }
     
     
+    
+    // WORKING ON THIS - Scrolling down to get more pages
+    
+//    private func loadMore() {
+//        print("trying to load more")
+//        bluditAPI.listPages(pageNumber: 2) { listPagesResponse in
+//            self.pages?.append(contentsOf: listPagesResponse!.data)
+//            self.setupTableView()
+//        }
+//    }
+    
 //    var isLoading = false
-    var pageIndex = 2
+//    var pageIndex = 2
 
-    
-    // WORKING ON THIS
-    
-    
 //    private func loadMore() {
 //        if !isLoading {
 //            isLoading = true
@@ -115,6 +132,40 @@ class MainViewController: UIViewController {
 //            }
 //        }
 
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//
+//        // UITableView only moves in one direction, y axis
+//        let currentOffset = scrollView.contentOffset.y
+//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+//
+//        if maximumOffset - currentOffset <= 10.0 {
+//            let spinner = UIActivityIndicatorView(style: .medium)
+//
+//            if pages?.count != pages?.count {
+//
+//                //print("this is the last cell")
+//
+//                spinner.startAnimating()
+//                spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: pagesTable.bounds.width, height: CGFloat(44))
+//                spinner.hidesWhenStopped = true
+//                self.pagesTable.tableFooterView = spinner
+//                self.pagesTable.tableFooterView?.isHidden = false
+//
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                    //MARK: Loading more data
+//                    self.loadMore()
+//
+//                }
+//
+//            }
+//            else{
+//                self.pagesTable.tableFooterView?.isHidden = true
+//                spinner.stopAnimating()
+//            }
+//        }
+//
+//    }
+    
     }
 
 

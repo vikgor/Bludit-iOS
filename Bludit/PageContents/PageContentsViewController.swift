@@ -41,12 +41,6 @@ class PageContentsViewController: UIViewController {
             coverImageView.clipsToBounds = true
         }
         
-        ///Page tags
-        let tagsLabel = UILabel()
-        if pageTags != "" {
-            tagsLabel.text  = "Tags: \(pageTags!)"
-        }
-        
         ///Page contents
         let pageContentsTextView = UITextView()
         pageContentsTextView.isScrollEnabled = false
@@ -55,14 +49,21 @@ class PageContentsViewController: UIViewController {
         pageContentsTextView.isSelectable = true
         pageContentsTextView.text = pageContents
         
+        ///Page tags
+        let tagsLabel = UILabel()
+        if pageTags != "" {
+            tagsLabel.text  = "Tags: \(pageTags!)"
+        }
+        
         ///Stack View
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 16.0
+//        stackView.setCustomSpacing(30.0, after: tagsLabel)
         stackView.addArrangedSubview(coverImageView)
-        stackView.addArrangedSubview(tagsLabel)
         stackView.addArrangedSubview(pageContentsTextView)
+        stackView.addArrangedSubview(tagsLabel)
         
         ///Scroll View
         let scrollView = UIScrollView()
@@ -78,7 +79,7 @@ class PageContentsViewController: UIViewController {
             stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -16),
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
                 
