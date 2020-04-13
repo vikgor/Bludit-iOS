@@ -36,9 +36,14 @@ class MainViewController: UIViewController {
     //MARK: - Set up UI
     private func setupActivityIndicator() {
         indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        indicator.style = .medium
-        indicator.center = self.view.center
-        self.view.addSubview(indicator)
+        indicator.style = .large
+        view.addSubview(indicator)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            indicator.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
+            indicator.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor)
+        ])
+        
     }
     
     private func setupNavigation() {
@@ -100,28 +105,29 @@ class MainViewController: UIViewController {
 //        bluditAPI.listPages(pageNumber: 2) { listPagesResponse in
 //            self.pages?.append(contentsOf: listPagesResponse!.data)
 //            self.setupTableView()
+//            self.pagesTable.reloadData()
 //        }
 //    }
     
-//    var isLoading = false
-//    var pageIndex = 2
-
-//    private func loadMore() {
-//        if !isLoading {
-//            isLoading = true
-//            DispatchQueue.global().async {
-//                self.bluditAPI.listPages(pageNumber: self.pageIndex) { listPagesResponse in
-//                    if let newPages = listPagesResponse?.data {
-//                        self.pages?.append(contentsOf: newPages)
-//                    }
-//                    self.pageIndex += 1
-//                    self.pagesTable.reloadData()
-//                    self.isLoading = false
-//                }
-//            }
-//        }
-//    }
+    var isLoading = false
+    var pageIndex = 2
     
+    private func loadMore() {
+        if !isLoading {
+            isLoading = true
+            DispatchQueue.global().async {
+                self.bluditAPI.listPages(pageNumber: self.pageIndex) { listPagesResponse in
+                    if let newPages = listPagesResponse?.data {
+                        self.pages?.append(contentsOf: newPages)
+                    }
+                    self.pageIndex += 1
+                    self.pagesTable.reloadData()
+                    self.isLoading = false
+                }
+            }
+        }
+    }
+  
     
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //            let offsetY = scrollView.contentOffset.y
@@ -181,6 +187,12 @@ extension MainViewController: UITableViewDataSource {
         let content = pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.detailTextLabel?.text = content
         cell.accessoryType = .disclosureIndicator
+        
+        // Check if the last row number is the same as the last current data element
+        if indexPath.row == self.pages!.count - 1 {
+            self.loadMore()
+        }
+        
         return cell
     }
     

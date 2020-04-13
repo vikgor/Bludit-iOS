@@ -38,6 +38,7 @@
 		05B00CF92438DCAC002D6A11 /* CreateNewPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CF72438DCAB002D6A11 /* CreateNewPageViewController.xib */; };
 		05B00CFB243945EB002D6A11 /* TextFieldInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CFA243945EB002D6A11 /* TextFieldInTableViewCell.swift */; };
 		05B00CFD2439EFCD002D6A11 /* TextViewInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CFC2439EFCD002D6A11 /* TextViewInTableViewCell.swift */; };
+		05D12F43244478B400C35CD8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D12F42244478B400C35CD8 /* Reachability.swift */; };
 		05F7AFAF243A6FB900BF3AB3 /* PageContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		05B00CF72438DCAB002D6A11 /* CreateNewPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNewPageViewController.xib; sourceTree = "<group>"; };
 		05B00CFA243945EB002D6A11 /* TextFieldInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInTableViewCell.swift; sourceTree = "<group>"; };
 		05B00CFC2439EFCD002D6A11 /* TextViewInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInTableViewCell.swift; sourceTree = "<group>"; };
+		05D12F42244478B400C35CD8 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +198,7 @@
 				05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */,
 				05B00C962435E84F002D6A11 /* TagsResponse.swift */,
 				05B00CF32437E284002D6A11 /* StringExtension.swift */,
+				05D12F42244478B400C35CD8 /* Reachability.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				05B00CFD2439EFCD002D6A11 /* TextViewInTableViewCell.swift in Sources */,
 				05B00CD124373A9E002D6A11 /* DraftsViewController.swift in Sources */,
 				05B00C622435D6CD002D6A11 /* AppDelegate.swift in Sources */,
+				05D12F43244478B400C35CD8 /* Reachability.swift in Sources */,
 				05B00CD524373AA7002D6A11 /* ProfileViewController.swift in Sources */,
 				05B00C952435D7B5002D6A11 /* ListPagesResponse.swift in Sources */,
 				05B00C642435D6CD002D6A11 /* SceneDelegate.swift in Sources */,

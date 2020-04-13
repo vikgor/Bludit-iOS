@@ -62,7 +62,7 @@ class LoginViewController: UIViewController {
                               action: #selector(authenticate),
                               for: UIControl.Event.touchUpInside)
 //        loginButton.isEnabled = false
-        loginButton.alpha = 0.5
+//        loginButton.alpha = 0.5
         self.loginButton = loginButton
         
         ///Stack view
@@ -96,7 +96,14 @@ class LoginViewController: UIViewController {
         let defaults = UserDefaults.standard
         defaults.set(websiteTextField.text, forKey: "website")
         defaults.set(apiTokenTextField.text, forKey: "token")
-        showNextScreen()
+        
+        if Reachability.isConnectedToNetwork() {
+            showNextScreen()
+        } else {
+            let alert = UIAlertController(title: "No connection", message: "There seems to be a problem. Please check your internet connection", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func showNextScreen() {

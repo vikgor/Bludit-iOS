@@ -37,6 +37,7 @@ class CreateNewPageViewController: UIViewController {
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableFooterView = UIView()
+        tableView.isScrollEnabled = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
         let margins = view.layoutMarginsGuide
@@ -159,7 +160,7 @@ extension CreateNewPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 2:
-            return 420
+            return self.tableView.bounds.size.height - tableView.rowHeight
         default:
             return tableView.rowHeight
         }
