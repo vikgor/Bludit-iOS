@@ -109,24 +109,24 @@ class MainViewController: UIViewController {
 //        }
 //    }
     
-    var isLoading = false
-    var pageIndex = 2
-    
-    private func loadMore() {
-        if !isLoading {
-            isLoading = true
-            DispatchQueue.global().async {
-                self.bluditAPI.listPages(pageNumber: self.pageIndex) { listPagesResponse in
-                    if let newPages = listPagesResponse?.data {
-                        self.pages?.append(contentsOf: newPages)
-                    }
-                    self.pageIndex += 1
-                    self.pagesTable.reloadData()
-                    self.isLoading = false
-                }
-            }
-        }
-    }
+//    var isLoading = false
+//    var pageIndex = 2
+//
+//    private func loadMore() {
+//        if !isLoading {
+//            isLoading = true
+//            DispatchQueue.global().async {
+//                self.bluditAPI.listPages(pageNumber: self.pageIndex) { listPagesResponse in
+//                    if let newPages = listPagesResponse?.data {
+//                        self.pages?.append(contentsOf: newPages)
+//                    }
+//                    self.pageIndex += 1
+//                    self.pagesTable.reloadData()
+//                    self.isLoading = false
+//                }
+//            }
+//        }
+//    }
   
     
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -187,12 +187,6 @@ extension MainViewController: UITableViewDataSource {
         let content = pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.detailTextLabel?.text = content
         cell.accessoryType = .disclosureIndicator
-        
-        // Check if the last row number is the same as the last current data element
-        if indexPath.row == self.pages!.count - 1 {
-            self.loadMore()
-        }
-        
         return cell
     }
     
@@ -225,24 +219,19 @@ extension MainViewController: UITableViewDelegate {
     
     /// Editing the table view. Swipe to delete or adit a page.
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
         let deleteItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, completion) in
             print("Deleted")
             if let query = self.pages?[indexPath.row].key {
                 self.bluditAPI.deletePage(query: query)
                 self.pages?.remove(at: indexPath.row)
             }
-            
             completion(true)
             tableView.reloadData()
         }
-        
         let editItem = UIContextualAction(style: .normal, title: "Edit") {  (contextualAction, view, completion) in
             print("Edited")
         }
-        
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
-        
         return swipeActions
     }
 }
