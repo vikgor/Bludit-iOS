@@ -18,7 +18,6 @@
 		05B00C952435D7B5002D6A11 /* ListPagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C942435D7B5002D6A11 /* ListPagesResponse.swift */; };
 		05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C962435E84F002D6A11 /* TagsResponse.swift */; };
 		05B00C9A24363BBC002D6A11 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9924363BBC002D6A11 /* APIEndpoints.swift */; };
-		05B00C9C24363BD0002D6A11 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9B24363BD0002D6A11 /* HTTPMethod.swift */; };
 		05B00C9E243647C0002D6A11 /* NewPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9D243647C0002D6A11 /* NewPageResponse.swift */; };
 		05B00CA024366AC1002D6A11 /* FindPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */; };
 		05B00CA224369D85002D6A11 /* DeletedPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */; };
@@ -78,7 +77,6 @@
 		05B00C962435E84F002D6A11 /* TagsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsResponse.swift; sourceTree = "<group>"; };
 		05B00C9824362087002D6A11 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05B00C9924363BBC002D6A11 /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
-		05B00C9B24363BD0002D6A11 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		05B00C9D243647C0002D6A11 /* NewPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageResponse.swift; sourceTree = "<group>"; };
 		05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPageResponse.swift; sourceTree = "<group>"; };
 		05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedPageResponse.swift; sourceTree = "<group>"; };
@@ -191,14 +189,8 @@
 			children = (
 				05B00C912435D736002D6A11 /* BluditAPI.swift */,
 				05B00C9924363BBC002D6A11 /* APIEndpoints.swift */,
-				05B00C9B24363BD0002D6A11 /* HTTPMethod.swift */,
-				05B00C942435D7B5002D6A11 /* ListPagesResponse.swift */,
-				05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */,
-				05B00C9D243647C0002D6A11 /* NewPageResponse.swift */,
-				05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */,
-				05B00C962435E84F002D6A11 /* TagsResponse.swift */,
-				05B00CF32437E284002D6A11 /* StringExtension.swift */,
-				05D12F42244478B400C35CD8 /* Reachability.swift */,
+				05D12F45244498CE00C35CD8 /* Models */,
+				05D12F46244498F200C35CD8 /* Helpers */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -277,6 +269,27 @@
 				05B00CF72438DCAB002D6A11 /* CreateNewPageViewController.xib */,
 			);
 			path = CreateNewPage;
+			sourceTree = "<group>";
+		};
+		05D12F45244498CE00C35CD8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				05B00C942435D7B5002D6A11 /* ListPagesResponse.swift */,
+				05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */,
+				05B00C9D243647C0002D6A11 /* NewPageResponse.swift */,
+				05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */,
+				05B00C962435E84F002D6A11 /* TagsResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		05D12F46244498F200C35CD8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				05B00CF32437E284002D6A11 /* StringExtension.swift */,
+				05D12F42244478B400C35CD8 /* Reachability.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		05F7AFAD243A6F7700BF3AB3 /* PageContents */ = {
@@ -439,7 +452,6 @@
 				05B00CF42437E284002D6A11 /* StringExtension.swift in Sources */,
 				05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */,
 				05B00C662435D6CD002D6A11 /* LoginViewController.swift in Sources */,
-				05B00C9C24363BD0002D6A11 /* HTTPMethod.swift in Sources */,
 				05B00CFD2439EFCD002D6A11 /* TextViewInTableViewCell.swift in Sources */,
 				05B00CD124373A9E002D6A11 /* DraftsViewController.swift in Sources */,
 				05B00C622435D6CD002D6A11 /* AppDelegate.swift in Sources */,

@@ -28,7 +28,6 @@ class MainViewController: UIViewController {
         setupNavigation()
         setupSearchbar()
         setupPagesTable()
-        loadPages()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         pagesTable.refreshControl = refreshControl
     }
@@ -43,7 +42,6 @@ class MainViewController: UIViewController {
             indicator.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
             indicator.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor)
         ])
-        
     }
     
     private func setupNavigation() {
@@ -61,6 +59,7 @@ class MainViewController: UIViewController {
     private func setupPagesTable() {
         pagesTable.delegate = self
         pagesTable.dataSource = self
+        loadPages()
     }
     
     private func setupTableView() {
@@ -77,7 +76,6 @@ class MainViewController: UIViewController {
     @objc func refresh(sender: AnyObject) {
         loadPages()
         print("refreshed")
-        pagesTable.reloadData()
         pagesTable.refreshControl?.endRefreshing()
     }
     
@@ -92,10 +90,10 @@ class MainViewController: UIViewController {
         bluditAPI.listPages(pageNumber: 1) { listPagesResponse in
             self.pages = listPagesResponse?.data
             self.setupTableView()
+            self.pagesTable.reloadData()
             self.indicator.removeFromSuperview()
         }
     }
-    
     
     
     // WORKING ON THIS - Scrolling down to get more pages
@@ -176,11 +174,11 @@ class MainViewController: UIViewController {
 
 
 extension MainViewController: UITableViewDataSource {
-    
+    /// Count the number of pages
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pages?.count ?? 0
     }
-    
+    /// Set up cells with a label and detailedText
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
         cell.textLabel?.text = pages?[indexPath.row].title
@@ -189,34 +187,21 @@ extension MainViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100
-//    }
 }
 
 extension MainViewController: UITableViewDelegate {
-    
+    /// Tapping on a cell and going to the Page contents
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         pagesTable.deselectRow(at: indexPath, animated: true)
-        print("Page selected: \(String(describing: pages?[indexPath.row].title))")
-        
         DispatchQueue.main.async {
             let destination = PageContentsViewController()
             destination.pageTitle = self.pages?[indexPath.row].title
             destination.pageTags = self.pages?[indexPath.row].tags
-//            destination.pageContents = self.pages?[indexPath.row].contentRaw.htmlAttributedString?.string
             let content = self.pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
             destination.pageContents = content
             self.navigationController?.pushViewController(destination, animated: true)
         }
-        
     }
-    
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print("Tapped accessory button at row \(indexPath.row)")
-    }
-    
     /// Editing the table view. Swipe to delete or adit a page.
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, completion) in

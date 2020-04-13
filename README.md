@@ -18,7 +18,6 @@ TODO:
 - [ ] Main VC
     - [ ] Table with the last 15 published pages
         - [ ] Show 10 last pages, then on bottom scroll show 10 more and so on
-        - [ ] Fix refreshing (it needs to be refreshed twice before reloading the table after creating the page)
     - [ ] Check/uncheck published/sticky/static/draft/untagged
     - [ ] Request a particular page
         - [ ] Fix deleting the found page
