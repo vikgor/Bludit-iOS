@@ -33,22 +33,22 @@ class PageContentsViewController: UIViewController {
         ///Page cover image
         ///If  cover image is not set up for the page, don't show the view. Otherwise take the URL from the page details
         let coverImageView = UIImageView()
-        if coverImage != "" {
-            
-            //FIXME: - Force unwrapping
-            let url = URL(string: coverImage!)
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!)
-                DispatchQueue.main.async {
-                    coverImageView.image = UIImage(data: data!)
+        
+        if let coverImage = coverImage {
+            if coverImage != "" {
+                let url = URL(string: coverImage)
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: url!)
+                    DispatchQueue.main.async {
+                        coverImageView.image = UIImage(data: data!)
+                    }
                 }
+                coverImageView.image = UIImage(named: coverImage)
+                coverImageView.backgroundColor = UIColor.systemBackground
+                coverImageView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+                coverImageView.contentMode = .scaleAspectFill
+                coverImageView.clipsToBounds = true
             }
-            
-            coverImageView.image = UIImage(named: coverImage!)
-            coverImageView.backgroundColor = UIColor.systemBackground
-            coverImageView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
-            coverImageView.contentMode = .scaleAspectFill
-            coverImageView.clipsToBounds = true
         }
         
         ///Page contents

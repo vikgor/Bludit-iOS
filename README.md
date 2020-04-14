@@ -28,6 +28,6 @@ TODO:
     - [ ] Edit a page
 - [ ] Page view
     - [ ] Pass data from table view more elegantly
-    - [ ] Cache cover image, check threads, force casts and if everything else is ok with cover image
+    - [ ] Cache cover image, check threads, and if everything else is ok with cover image
 - [ ] Profile view
     - [ ] Edit api token, auth token

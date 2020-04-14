@@ -199,7 +199,7 @@ extension MainViewController: UITableViewDelegate {
             destination.pageTags = self.pages?[indexPath.row].tags
             let content = self.pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
             destination.pageContents = content
-            destination.coverImage = self.pages?[indexPath.row].coverImage.description
+            destination.coverImage = self.pages?[indexPath.row].coverImage.value
             self.navigationController?.pushViewController(destination, animated: true)
         }
     }

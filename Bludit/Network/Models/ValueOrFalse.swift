@@ -10,8 +10,7 @@ import Foundation
 
 /// Helper for PageDetails.coverImage and such, where type can either be Bool or String
 public struct ValueOrFalse<T:Codable>: Codable {
-    public var description: String
-    let value: T?
+    public let value: T?
     public init(from decoder:Decoder) throws {
         let container = try decoder.singleValueContainer()
         let falseValue = try? container.decode(Bool.self)
