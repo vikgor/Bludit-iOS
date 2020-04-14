@@ -16,10 +16,8 @@ public struct ValueOrFalse<T:Codable>: Codable {
         let falseValue = try? container.decode(Bool.self)
         if falseValue == nil {
             value = try container.decode(T.self)
-            description = try container.decode(T.self) as! String
         } else {
             value = nil
-            description = ""
         }
     }
 }
