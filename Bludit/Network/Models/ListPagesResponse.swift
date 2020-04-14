@@ -18,8 +18,8 @@ public struct PageDetails: Codable {
 //    public let category: String
     public let content: String
     public let contentRaw: String
-    public let coverImage: Bool
-    public let coverImageFilename: Bool
+    public let coverImage: ValueOrFalse<String>
+    public let coverImageFilename: ValueOrFalse<String>
     public let date: String
 //    public let dateRaw: String
     public let dateUTC: String

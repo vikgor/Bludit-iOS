@@ -20,15 +20,14 @@ TODO:
         - [ ] Show 10 last pages, then on bottom scroll show 10 more and so on
     - [ ] Check/uncheck published/sticky/static/draft/untagged
     - [ ] Request a particular page
+        - [ ] Correctly set up UISearchController with Scope bars for published/sticky/draft/static
         - [ ] Fix deleting the found page
     - [ ] Create a new page
         - [ ] Add a send button on the right like in Mail and Messages apps
         - [ ] Change title dynamically from pageTitleTextField (like Mail app)
     - [ ] Edit a page
-    - [ ] Delete a page
-        - [ ] Edit table to delete
 - [ ] Page view
     - [ ] Pass data from table view more elegantly
-    - [ ] Show cover image if it's set up for the page
+    - [ ] Cache cover image, check threads, force casts and if everything else is ok with cover image
 - [ ] Profile view
     - [ ] Edit api token, auth token

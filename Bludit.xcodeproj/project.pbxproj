@@ -38,6 +38,7 @@
 		05B00CFB243945EB002D6A11 /* TextFieldInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CFA243945EB002D6A11 /* TextFieldInTableViewCell.swift */; };
 		05B00CFD2439EFCD002D6A11 /* TextViewInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CFC2439EFCD002D6A11 /* TextViewInTableViewCell.swift */; };
 		05D12F43244478B400C35CD8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D12F42244478B400C35CD8 /* Reachability.swift */; };
+		05D12F48244603D700C35CD8 /* ValueOrFalse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D12F47244603D700C35CD8 /* ValueOrFalse.swift */; };
 		05F7AFAF243A6FB900BF3AB3 /* PageContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		05B00CFA243945EB002D6A11 /* TextFieldInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInTableViewCell.swift; sourceTree = "<group>"; };
 		05B00CFC2439EFCD002D6A11 /* TextViewInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInTableViewCell.swift; sourceTree = "<group>"; };
 		05D12F42244478B400C35CD8 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		05D12F47244603D700C35CD8 /* ValueOrFalse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueOrFalse.swift; sourceTree = "<group>"; };
 		05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				05B00C942435D7B5002D6A11 /* ListPagesResponse.swift */,
+				05D12F47244603D700C35CD8 /* ValueOrFalse.swift */,
 				05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */,
 				05B00C9D243647C0002D6A11 /* NewPageResponse.swift */,
 				05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */,
@@ -440,6 +443,7 @@
 			files = (
 				05B00CF82438DCAC002D6A11 /* CreateNewPageViewController.swift in Sources */,
 				05B00CA224369D85002D6A11 /* DeletedPageResponse.swift in Sources */,
+				05D12F48244603D700C35CD8 /* ValueOrFalse.swift in Sources */,
 				05B00CF1243778A4002D6A11 /* PagesListCell.swift in Sources */,
 				05B00CCD24373A85002D6A11 /* MainViewController.swift in Sources */,
 				05B00CFB243945EB002D6A11 /* TextFieldInTableViewCell.swift in Sources */,

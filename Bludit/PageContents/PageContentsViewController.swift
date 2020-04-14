@@ -13,7 +13,7 @@ class PageContentsViewController: UIViewController {
     var pageTitle: String? = "title"
     var pageTags: String? = "tags"
     var pageContents: String? = "contents"
-    var coverImage: String = "logo"
+    var coverImage: String? = "logo"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,17 @@ class PageContentsViewController: UIViewController {
         ///If  cover image is not set up for the page, don't show the view. Otherwise take the URL from the page details
         let coverImageView = UIImageView()
         if coverImage != "" {
-            coverImageView.image = UIImage(named: coverImage)
+            
+            //FIXME: - Force unwrapping
+            let url = URL(string: coverImage!)
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    coverImageView.image = UIImage(data: data!)
+                }
+            }
+            
+            coverImageView.image = UIImage(named: coverImage!)
             coverImageView.backgroundColor = UIColor.systemBackground
             coverImageView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
             coverImageView.contentMode = .scaleAspectFill
