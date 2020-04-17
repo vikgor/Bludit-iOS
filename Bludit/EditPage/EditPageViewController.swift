@@ -1,37 +1,42 @@
 //
-//  CreateNewPageViewController.swift
+//  EditPageViewController.swift
 //  Bludit
 //
-//  Created by Viktor Gordienko on 4/4/20.
+//  Created by Viktor Gordienko on 4/17/20.
 //  Copyright © 2020 Viktor Gordienko. All rights reserved.
 //
 
 import UIKit
 
-class CreateNewPageViewController: UIViewController {
-
+class EditPageViewController: UIViewController {
+    
     private let bluditAPI = BluditAPI()
     private let tableView = UITableView()
-    private var pageTitle: String? = nil
-    private var pageTags: String? = nil
-    private var pageContents: String? = nil
+    private var pageTitle = ""
+    private var pageTags = ""
+    private var pageContents = ""
+    var pageKey = ""
+    var initialPageTitle = ""
+    var initialPageTags = ""
+    var initialPageContents = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
         setupTableView()
     }
-        
+    
     //MARK: - Set up UI
     private func setupNavigation() {
-        self.navigationItem.title = "Create new page"
+        view.backgroundColor = .systemBackground
+        self.navigationItem.title = "Edit page"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         let cacnelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-        let createButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(create))
+        let createButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
         navigationItem.leftBarButtonItem = cacnelButton
         navigationItem.rightBarButtonItem = createButton
     }
-
+    
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,48 +56,43 @@ class CreateNewPageViewController: UIViewController {
     
     /// Cancel creating new page
     @objc private func cancel() {
-        if bothInputsAreEmpty() {
+        if nothingChanged() {
             self.dismiss(animated: true, completion: nil)
         } else {
             showActionSheetForCancel()
         }
     }
-        
-    /// Create new page
-    @objc private func create() {
+    
+    /// Edit page
+    @objc private func save() {
         if someInputsAreEmpty() {
             showActionSheetForCreate()
         } else {
-            bluditAPI.createPage(title: pageTitle!, tags: pageTags!, content: pageContents!, type: "published")
+            bluditAPI.editPage(pageKey: pageKey, title: pageTitle, tags: pageTags, content: pageContents)
             self.dismiss(animated: true, completion: nil)
         }
     }
     
     private func showActionSheetForCancel() {
-        let alertController = UIAlertController()
-        let  deleteButton = UIAlertAction(title: "Delete Draft", style: .destructive, handler: { (action) -> Void in
-            self.dismiss(animated: true, completion: nil)
-        })
-        let sendButton = UIAlertAction(title: "Save Draft", style: .default, handler: { (action) -> Void in
-            self.bluditAPI.createPage(title: self.pageTitle!, tags: self.pageTags!, content: self.pageContents!, type: "draft")
+        let alertController = UIAlertController(title: "There are unsaved changes", message: nil, preferredStyle: .actionSheet)
+        let  quitButton = UIAlertAction(title: "Quit Editing", style: .destructive, handler: { (action) -> Void in
             self.dismiss(animated: true, completion: nil)
         })
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
         })
-        alertController.addAction(deleteButton)
-        alertController.addAction(sendButton)
+        alertController.addAction(quitButton)
         alertController.addAction(cancelButton)
         self.navigationController?.present(alertController, animated: true, completion: nil)
     }
-
+    
     private func showActionSheetForCreate() {
         let alertController = UIAlertController(title: "Some fields are empty", message: "Would you like to save it as draft?", preferredStyle: .actionSheet)
         let  createButton = UIAlertAction(title: "Create Page", style: .default, handler: { (action) -> Void in
-            self.bluditAPI.createPage(title: self.pageTitle!, tags: self.pageTags!, content: self.pageContents!, type: "published")
+            self.bluditAPI.createPage(title: self.pageTitle, tags: self.pageTags, content: self.pageContents, type: "published")
             self.dismiss(animated: true, completion: nil)
         })
         let sendButton = UIAlertAction(title: "Save Draft", style: .default, handler: { (action) -> Void in
-            self.bluditAPI.createPage(title: self.pageTitle!, tags: self.pageTags!, content: self.pageContents!, type: "draft")
+            self.bluditAPI.createPage(title: self.pageTitle, tags: self.pageTags, content: self.pageContents, type: "draft")
             self.dismiss(animated: true, completion: nil)
         })
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
@@ -102,7 +102,7 @@ class CreateNewPageViewController: UIViewController {
         alertController.addAction(cancelButton)
         self.navigationController?.present(alertController, animated: true, completion: nil)
     }
-
+    
     ///Check if both the title and contents is empty
     private func bothInputsAreEmpty() -> Bool {
         getTextFromInputs()
@@ -112,11 +112,21 @@ class CreateNewPageViewController: UIViewController {
             return true
         }
     }
-
+    
     ///Check if either the title or contents is empty
     private func someInputsAreEmpty() -> Bool {
         getTextFromInputs()
         if ((pageTitle != "") && (pageContents != "")) {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    ///Check if nothing changed
+    private func nothingChanged() -> Bool {
+        getTextFromInputs()
+        if ((pageTitle != initialPageTitle) || (pageContents != initialPageContents) || (pageTags != initialPageTags)) {
             return false
         } else {
             return true
@@ -128,14 +138,20 @@ class CreateNewPageViewController: UIViewController {
         let cellTags = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldInTableViewCell
         let cellContents = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextViewInTableViewCell
         ///Assign text from inputs to variables=
-        pageTitle = cellTitle.textField?.text
-        pageTags = cellTags.textField?.text
-        pageContents = cellContents.textView?.text
+        if let pageTitle = cellTitle.textField?.text {
+            self.pageTitle = pageTitle
+        }
+        if let pageTags = cellTags.textField?.text {
+            self.pageTags = pageTags
+        }
+        if let pageContents = cellContents.textView?.text {
+            self.pageContents = pageContents
+        }
     }
     
 }
 
-extension CreateNewPageViewController: UITableViewDataSource {
+extension EditPageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -147,18 +163,18 @@ extension CreateNewPageViewController: UITableViewDataSource {
             let cell = TextFieldInTableViewCell(style: .default,
                                                 reuseIdentifier: "cell",
                                                 placeholder: "Page title",
-                                                text: "")
+                                                text: initialPageTitle)
             return cell
         case 1:
             let cell = TextFieldInTableViewCell(style: .default,
                                                 reuseIdentifier: "cell",
                                                 placeholder: "Page tags (optional, separated)",
-                                                text: "")
+                                                text: initialPageTags)
             return cell
         default:
             let cell = TextViewInTableViewCell(style: .default,
                                                reuseIdentifier: "cell",
-                                               text: "")
+                                               text: initialPageContents)
             return cell
         }
         
@@ -176,11 +192,11 @@ extension CreateNewPageViewController: UITableViewDataSource {
     
 }
 
-extension CreateNewPageViewController: UITableViewDelegate { }
+extension EditPageViewController: UITableViewDelegate { }
 
-extension CreateNewPageViewController: UITextViewDelegate { }
+extension EditPageViewController: UITextViewDelegate { }
 
-extension CreateNewPageViewController: UITextFieldDelegate {
+extension EditPageViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) { }
     func textFieldDidEndEditing(_ textField: UITextField) { }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{ return true }

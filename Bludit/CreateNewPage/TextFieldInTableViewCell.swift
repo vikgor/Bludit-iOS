@@ -20,12 +20,12 @@ class TextFieldInTableViewCell: UITableViewCell {
     private(set) weak var textField: UITextField?
 //    private(set) weak var descriptionLabel: UILabel? // Uncomment this to have a description label on the left of the placeholder
 
-    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, placeholder: String) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, placeholder: String, text: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupSubviews(placeholder: placeholder)
+        setupSubviews(placeholder: placeholder, text: text)
     }
 
-    private func setupSubviews(placeholder: String) {
+    private func setupSubviews(placeholder: String, text: String) {
         
         ///Stack view
         let stackView = UIStackView()
@@ -44,7 +44,8 @@ class TextFieldInTableViewCell: UITableViewCell {
         /// Text field
         let textField = UITextField()
         textField.textAlignment = .left
-        textField.placeholder = "Placeholder"
+//        textField.placeholder = "Placeholder"
+        textField.text = text
         textField.placeholder = placeholder
         textField.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
         stackView.addArrangedSubview(textField)

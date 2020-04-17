@@ -39,6 +39,7 @@
 		05B00CFD2439EFCD002D6A11 /* TextViewInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CFC2439EFCD002D6A11 /* TextViewInTableViewCell.swift */; };
 		05D12F43244478B400C35CD8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D12F42244478B400C35CD8 /* Reachability.swift */; };
 		05D12F48244603D700C35CD8 /* ValueOrFalse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D12F47244603D700C35CD8 /* ValueOrFalse.swift */; };
+		05DB7C2B2449AD4C00B1B371 /* EditPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DB7C2A2449AD4C00B1B371 /* EditPageViewController.swift */; };
 		05F7AFAF243A6FB900BF3AB3 /* PageContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		05B00CFC2439EFCD002D6A11 /* TextViewInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInTableViewCell.swift; sourceTree = "<group>"; };
 		05D12F42244478B400C35CD8 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		05D12F47244603D700C35CD8 /* ValueOrFalse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueOrFalse.swift; sourceTree = "<group>"; };
+		05DB7C2A2449AD4C00B1B371 /* EditPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageViewController.swift; sourceTree = "<group>"; };
 		05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 				05B00CE22437419C002D6A11 /* TabBar */,
 				05B00CA724372F58002D6A11 /* Main */,
 				05F7AFAD243A6F7700BF3AB3 /* PageContents */,
+				05DB7C282449AD2A00B1B371 /* EditPage */,
 				05B00CF52438DC60002D6A11 /* CreateNewPage */,
 				05B00CC924373A4F002D6A11 /* Drafts */,
 				05B00CCA24373A5D002D6A11 /* Profile */,
@@ -293,6 +296,14 @@
 				05D12F42244478B400C35CD8 /* Reachability.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		05DB7C282449AD2A00B1B371 /* EditPage */ = {
+			isa = PBXGroup;
+			children = (
+				05DB7C2A2449AD4C00B1B371 /* EditPageViewController.swift */,
+			);
+			path = EditPage;
 			sourceTree = "<group>";
 		};
 		05F7AFAD243A6F7700BF3AB3 /* PageContents */ = {
@@ -455,6 +466,7 @@
 				05F7AFAF243A6FB900BF3AB3 /* PageContentsViewController.swift in Sources */,
 				05B00CF42437E284002D6A11 /* StringExtension.swift in Sources */,
 				05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */,
+				05DB7C2B2449AD4C00B1B371 /* EditPageViewController.swift in Sources */,
 				05B00C662435D6CD002D6A11 /* LoginViewController.swift in Sources */,
 				05B00CFD2439EFCD002D6A11 /* TextViewInTableViewCell.swift in Sources */,
 				05B00CD124373A9E002D6A11 /* DraftsViewController.swift in Sources */,

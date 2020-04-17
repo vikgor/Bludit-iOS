@@ -163,10 +163,11 @@ class BluditAPI {
     ///   - query: <PAGE-KEY> : PageDetails.key
     ///   - title: Page title
     ///   - content: Page content
-    public func editPage(query: String,
+    public func editPage(pageKey: String,
                          title: String,
+                         tags: String,
                          content: String) {
-        components.path = "\(APIEndpoints.pages.rawValue)/\(query)"
+        components.path = "\(APIEndpoints.pages.rawValue)/\(pageKey)"
         let url = components.url!
         let parameters = ["token": apiToken,
                           "authentication": authToken,

@@ -20,12 +20,12 @@ class TextViewInTableViewCell: UITableViewCell {
 
     weak var delegate: TextViewInTableViewCellDelegate?
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, text: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupSubviews()
+        setupSubviews(text: text)
     }
 
-    private func setupSubviews() {
+    private func setupSubviews(text: String) {
         
         /// Stack view
         let stackView = UIStackView()
@@ -39,7 +39,7 @@ class TextViewInTableViewCell: UITableViewCell {
         let pageContentsTextView = UITextView()
         pageContentsTextView.isScrollEnabled = true
         pageContentsTextView.font = UIFont.systemFont(ofSize: 16)
-        pageContentsTextView.text = ""
+        pageContentsTextView.text = text
         stackView.addArrangedSubview(pageContentsTextView)
         self.textView = pageContentsTextView
         

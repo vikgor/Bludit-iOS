@@ -81,7 +81,8 @@ class MainViewController: UIViewController {
     
     @objc private func createPage() {
         DispatchQueue.main.async {
-            let navController = UINavigationController(rootViewController: CreateNewPageViewController())
+            let destination = CreateNewPageViewController()
+            let navController = UINavigationController(rootViewController: destination)
             self.navigationController?.present(navController, animated: true, completion: nil)
         }
     }
@@ -205,6 +206,7 @@ extension MainViewController: UITableViewDelegate {
     }
     /// Editing the table view. Swipe to delete or adit a page.
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        ///Delete page
         let deleteItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, completion) in
             print("Deleted")
             if let query = self.pages?[indexPath.row].key {
@@ -214,8 +216,29 @@ extension MainViewController: UITableViewDelegate {
             completion(true)
             tableView.reloadData()
         }
+        ///Edit page
         let editItem = UIContextualAction(style: .normal, title: "Edit") {  (contextualAction, view, completion) in
             print("Edited")
+            DispatchQueue.main.async {
+                let destination = EditPageViewController()
+                if let pageTitle = self.pages?[indexPath.row].title {
+                    destination.initialPageTitle = pageTitle
+                }
+                if let pageTags = self.pages?[indexPath.row].tags {
+                    destination.initialPageTags = pageTags
+                }
+                if let pageContents = self.pages?[indexPath.row].content {
+                    ///Converting raw html string into a readable string without html tags (before I figure out how to correctly show html in UILable)
+                    if let contents = pageContents.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) {
+                        destination.initialPageContents = contents
+                    }
+                }
+                if let pageKey = self.pages?[indexPath.row].key {
+                    destination.pageKey = pageKey
+                }
+                let navController = UINavigationController(rootViewController: destination)
+                self.navigationController?.present(navController, animated: true, completion: nil)
+            }
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
         return swipeActions
