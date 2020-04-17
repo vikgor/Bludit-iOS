@@ -15,20 +15,20 @@ public struct ListPagesResponse: Codable {
 }
 
 public struct PageDetails: Codable {
-//    public let category: String
+    public let category: ValueOrFalse<String>
     public let content: String
     public let contentRaw: String
     public let coverImage: ValueOrFalse<String>
     public let coverImageFilename: ValueOrFalse<String>
     public let date: String
-//    public let dateRaw: String
+    public let dateRaw: String
     public let dateUTC: String
     public let description: String
     public let key: String
-//    public let permalink: String
-//    public let slug: String
+    public let permalink: String
+    public let slug: String
     public let tags: String
     public let title: String
     public let type: String
-//    public let username: String
+    public let username: String
 }

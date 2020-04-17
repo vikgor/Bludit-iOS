@@ -1,5 +1,5 @@
 //
-//  TagsResponse.swift
+//  NewOrUpdatedPageResponse.swift
 //  Bludit
 //
 //  Created by Viktor Gordienko on 4/2/20.
@@ -8,14 +8,12 @@
 
 import Foundation
 
-public struct TagsResponse: Codable {
+public struct NewOrUpdatedPageResponse: Codable {
     public let status: String
     public let message: String
-    public let data: [TagsDetails]
+    public let data: UpdatedPageDetails
 }
 
-public struct TagsDetails: Codable {
-    public let name: String
-    public let list: [String]
+public struct UpdatedPageDetails: Codable {
     public let key: String
 }

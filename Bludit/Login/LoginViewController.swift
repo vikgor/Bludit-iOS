@@ -129,6 +129,13 @@ class LoginViewController: UIViewController {
 //                           title: "Find me (edited)",
 //                           content: "Page found and edited")
 //        bluditAPI.deletePage(query: "find-me")
+//        bluditAPI.listSettings()
+//        let updatedSettings = ["title": "81371 (updated)",
+//                               "github": "github.com/",
+//                               "instagram": "instagram.com/",
+//                               "itemsPerPage": 10] as [String : Any]
+//
+//        bluditAPI.editSettings(updatedSettings: updatedSettings)
     }
 }
 

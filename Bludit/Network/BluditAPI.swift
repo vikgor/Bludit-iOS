@@ -37,7 +37,7 @@ class BluditAPI {
     ///   - completion: completion
     private func universalRequest<T: Codable> (httpMethod: String,
                                                  url: URL,
-                                                 parameters: [String: String],
+                                                 parameters: [String: Any],
                                                  completion: @escaping (T) -> Void ) {
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: .main)
         var request = URLRequest(url: url)
@@ -153,7 +153,7 @@ class BluditAPI {
         
         universalRequest(httpMethod: "POST",
                          url: url,
-                         parameters: parameters) { (response: NewPageResponse) in
+                         parameters: parameters) { (response: NewOrUpdatedPageResponse) in
                             print("Response is \(response)")
         }
     }
@@ -176,7 +176,7 @@ class BluditAPI {
         
         universalRequest(httpMethod: "PUT",
                          url: url,
-                         parameters: parameters) { (response: NewPageResponse) in
+                         parameters: parameters) { (response: NewOrUpdatedPageResponse) in
                             print("Response is \(response)")
         }
     }
@@ -220,8 +220,41 @@ class BluditAPI {
            
            universalRequest(httpMethod: "GET",
                             url: url,
-                            parameters: parameters) { (response: TagsResponse) in
+                            parameters: parameters) { (response: CategoriesResponse) in
                                print("Response is \(response)")
            }
-       }
+    }
+    
+    /// List settings
+    public func listSettings() {
+        components.path = APIEndpoints.settings.rawValue
+        let parameters = ["token": apiToken]
+        let allowedParameters = [
+            URLQueryItem(name: "authentication", value: authToken)
+        ]
+        components.queryItems?.append(contentsOf: allowedParameters)
+        let url = components.url!
+        universalRequest(httpMethod: "GET",
+                         url: url,
+                         parameters: parameters) { (response: SettingsResponse) in
+                            print("Response is \(response)")
+        }
+    }
+    
+    /// Edit settings
+    public func editSettings(updatedSettings: [String: Any]) {
+        components.path = APIEndpoints.settings.rawValue
+        var parameters: [String: Any] = ["token": apiToken,
+                                         "authentication": authToken]
+        let url = components.url!
+        ///Going through the updatedSetting and adding them to the parameters
+        for updatedSetting in updatedSettings {
+            parameters[updatedSetting.key] = updatedSetting.value
+        }
+        universalRequest(httpMethod: "PUT",
+                         url: url,
+                         parameters: parameters) { (response: SettingsUpdateResponse) in
+                            print("Response is \(response)")
+        }
+    }
 }

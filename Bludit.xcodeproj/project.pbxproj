@@ -18,7 +18,7 @@
 		05B00C952435D7B5002D6A11 /* ListPagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C942435D7B5002D6A11 /* ListPagesResponse.swift */; };
 		05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C962435E84F002D6A11 /* TagsResponse.swift */; };
 		05B00C9A24363BBC002D6A11 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9924363BBC002D6A11 /* APIEndpoints.swift */; };
-		05B00C9E243647C0002D6A11 /* NewPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9D243647C0002D6A11 /* NewPageResponse.swift */; };
+		05B00C9E243647C0002D6A11 /* NewOrUpdatedPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9D243647C0002D6A11 /* NewOrUpdatedPageResponse.swift */; };
 		05B00CA024366AC1002D6A11 /* FindPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */; };
 		05B00CA224369D85002D6A11 /* DeletedPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */; };
 		05B00CC7243739C8002D6A11 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CC5243739C8002D6A11 /* TabBarViewController.swift */; };
@@ -40,6 +40,9 @@
 		05D12F43244478B400C35CD8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D12F42244478B400C35CD8 /* Reachability.swift */; };
 		05D12F48244603D700C35CD8 /* ValueOrFalse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D12F47244603D700C35CD8 /* ValueOrFalse.swift */; };
 		05DB7C2B2449AD4C00B1B371 /* EditPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DB7C2A2449AD4C00B1B371 /* EditPageViewController.swift */; };
+		05DB7C2D2449E23D00B1B371 /* SettingsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DB7C2C2449E23D00B1B371 /* SettingsResponse.swift */; };
+		05DB7C2F2449E3DD00B1B371 /* SettingsUpdateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DB7C2E2449E3DD00B1B371 /* SettingsUpdateResponse.swift */; };
+		05DB7C312449E8C000B1B371 /* CategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DB7C302449E8C000B1B371 /* CategoriesResponse.swift */; };
 		05F7AFAF243A6FB900BF3AB3 /* PageContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +82,7 @@
 		05B00C962435E84F002D6A11 /* TagsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsResponse.swift; sourceTree = "<group>"; };
 		05B00C9824362087002D6A11 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05B00C9924363BBC002D6A11 /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
-		05B00C9D243647C0002D6A11 /* NewPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPageResponse.swift; sourceTree = "<group>"; };
+		05B00C9D243647C0002D6A11 /* NewOrUpdatedPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrUpdatedPageResponse.swift; sourceTree = "<group>"; };
 		05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPageResponse.swift; sourceTree = "<group>"; };
 		05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedPageResponse.swift; sourceTree = "<group>"; };
 		05B00CC5243739C8002D6A11 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +106,9 @@
 		05D12F42244478B400C35CD8 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		05D12F47244603D700C35CD8 /* ValueOrFalse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueOrFalse.swift; sourceTree = "<group>"; };
 		05DB7C2A2449AD4C00B1B371 /* EditPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageViewController.swift; sourceTree = "<group>"; };
+		05DB7C2C2449E23D00B1B371 /* SettingsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsResponse.swift; sourceTree = "<group>"; };
+		05DB7C2E2449E3DD00B1B371 /* SettingsUpdateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUpdateResponse.swift; sourceTree = "<group>"; };
+		05DB7C302449E8C000B1B371 /* CategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesResponse.swift; sourceTree = "<group>"; };
 		05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -280,11 +286,13 @@
 			isa = PBXGroup;
 			children = (
 				05B00C942435D7B5002D6A11 /* ListPagesResponse.swift */,
-				05D12F47244603D700C35CD8 /* ValueOrFalse.swift */,
 				05B00C9F24366AC1002D6A11 /* FindPageResponse.swift */,
-				05B00C9D243647C0002D6A11 /* NewPageResponse.swift */,
+				05B00C9D243647C0002D6A11 /* NewOrUpdatedPageResponse.swift */,
 				05B00CA124369D85002D6A11 /* DeletedPageResponse.swift */,
 				05B00C962435E84F002D6A11 /* TagsResponse.swift */,
+				05DB7C302449E8C000B1B371 /* CategoriesResponse.swift */,
+				05DB7C2C2449E23D00B1B371 /* SettingsResponse.swift */,
+				05DB7C2E2449E3DD00B1B371 /* SettingsUpdateResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,6 +300,7 @@
 		05D12F46244498F200C35CD8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				05D12F47244603D700C35CD8 /* ValueOrFalse.swift */,
 				05B00CF32437E284002D6A11 /* StringExtension.swift */,
 				05D12F42244478B400C35CD8 /* Reachability.swift */,
 			);
@@ -459,11 +468,14 @@
 				05B00CCD24373A85002D6A11 /* MainViewController.swift in Sources */,
 				05B00CFB243945EB002D6A11 /* TextFieldInTableViewCell.swift in Sources */,
 				05B00CA024366AC1002D6A11 /* FindPageResponse.swift in Sources */,
+				05DB7C2F2449E3DD00B1B371 /* SettingsUpdateResponse.swift in Sources */,
 				05B00C922435D736002D6A11 /* BluditAPI.swift in Sources */,
-				05B00C9E243647C0002D6A11 /* NewPageResponse.swift in Sources */,
+				05B00C9E243647C0002D6A11 /* NewOrUpdatedPageResponse.swift in Sources */,
+				05DB7C2D2449E23D00B1B371 /* SettingsResponse.swift in Sources */,
 				05B00CC7243739C8002D6A11 /* TabBarViewController.swift in Sources */,
 				05B00C9A24363BBC002D6A11 /* APIEndpoints.swift in Sources */,
 				05F7AFAF243A6FB900BF3AB3 /* PageContentsViewController.swift in Sources */,
+				05DB7C312449E8C000B1B371 /* CategoriesResponse.swift in Sources */,
 				05B00CF42437E284002D6A11 /* StringExtension.swift in Sources */,
 				05B00C972435E84F002D6A11 /* TagsResponse.swift in Sources */,
 				05DB7C2B2449AD4C00B1B371 /* EditPageViewController.swift in Sources */,
