@@ -27,8 +27,7 @@
 		05B00CCE24373A85002D6A11 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CCC24373A85002D6A11 /* MainViewController.xib */; };
 		05B00CD124373A9E002D6A11 /* DraftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CCF24373A9E002D6A11 /* DraftsViewController.swift */; };
 		05B00CD224373A9E002D6A11 /* DraftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CD024373A9E002D6A11 /* DraftsViewController.xib */; };
-		05B00CD524373AA7002D6A11 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CD324373AA7002D6A11 /* ProfileViewController.swift */; };
-		05B00CD624373AA7002D6A11 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CD424373AA7002D6A11 /* ProfileViewController.xib */; };
+		05B00CD524373AA7002D6A11 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CD324373AA7002D6A11 /* SettingsViewController.swift */; };
 		05B00CDB24373B42002D6A11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CDD24373B42002D6A11 /* Localizable.strings */; };
 		05B00CE124373D7D002D6A11 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B00CE024373D7D002D6A11 /* LoginViewController.xib */; };
 		05B00CF1243778A4002D6A11 /* PagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00CEF243778A4002D6A11 /* PagesListCell.swift */; };
@@ -91,8 +90,7 @@
 		05B00CCC24373A85002D6A11 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		05B00CCF24373A9E002D6A11 /* DraftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftsViewController.swift; sourceTree = "<group>"; };
 		05B00CD024373A9E002D6A11 /* DraftsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DraftsViewController.xib; sourceTree = "<group>"; };
-		05B00CD324373AA7002D6A11 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		05B00CD424373AA7002D6A11 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		05B00CD324373AA7002D6A11 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		05B00CD824373B18002D6A11 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		05B00CDC24373B42002D6A11 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05B00CDE24373B44002D6A11 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -170,7 +168,7 @@
 				05DB7C282449AD2A00B1B371 /* EditPage */,
 				05B00CF52438DC60002D6A11 /* CreateNewPage */,
 				05B00CC924373A4F002D6A11 /* Drafts */,
-				05B00CCA24373A5D002D6A11 /* Profile */,
+				05B00CCA24373A5D002D6A11 /* Settings */,
 				05B00C932435D789002D6A11 /* Network */,
 				05B00C6F2435D6D4002D6A11 /* Info.plist */,
 			);
@@ -243,13 +241,12 @@
 			path = Drafts;
 			sourceTree = "<group>";
 		};
-		05B00CCA24373A5D002D6A11 /* Profile */ = {
+		05B00CCA24373A5D002D6A11 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				05B00CD324373AA7002D6A11 /* ProfileViewController.swift */,
-				05B00CD424373AA7002D6A11 /* ProfileViewController.xib */,
+				05B00CD324373AA7002D6A11 /* SettingsViewController.swift */,
 			);
-			path = Profile;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		05B00CDF24373B52002D6A11 /* Resources */ = {
@@ -429,7 +426,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				05B00CF92438DCAC002D6A11 /* CreateNewPageViewController.xib in Resources */,
-				05B00CD624373AA7002D6A11 /* ProfileViewController.xib in Resources */,
 				05B00CC8243739C8002D6A11 /* TabBarViewController.xib in Resources */,
 				05B00C6E2435D6D4002D6A11 /* LaunchScreen.storyboard in Resources */,
 				05B00CD224373A9E002D6A11 /* DraftsViewController.xib in Resources */,
@@ -484,7 +480,7 @@
 				05B00CD124373A9E002D6A11 /* DraftsViewController.swift in Sources */,
 				05B00C622435D6CD002D6A11 /* AppDelegate.swift in Sources */,
 				05D12F43244478B400C35CD8 /* Reachability.swift in Sources */,
-				05B00CD524373AA7002D6A11 /* ProfileViewController.swift in Sources */,
+				05B00CD524373AA7002D6A11 /* SettingsViewController.swift in Sources */,
 				05B00C952435D7B5002D6A11 /* ListPagesResponse.swift in Sources */,
 				05B00C642435D6CD002D6A11 /* SceneDelegate.swift in Sources */,
 			);

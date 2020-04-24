@@ -26,8 +26,11 @@ TODO:
 - [ ] Page view
     - [ ] Pass data from table view more elegantly
     - [ ] Cache cover image, check threads, and if everything else is ok with cover image
-- [ ] Profile view
+- [ ] Settings view
+    - [ ] Show alert when settings were successfully saved
+    - [ ] Retrieve current settings
     - [ ] Edit api token, auth token
+    - [ ] Log out button
 - [ ] Clean the code
     - [ ] add 'final' to the classes
     - [ ] make private when needed

@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
 
     private let bluditAPI = BluditAPI()
     private var pages: [PageDetails]?
+    private var currentPage = 1
     private let refreshControl = UIRefreshControl()
     private var indicator = UIActivityIndicatorView()
 
@@ -88,7 +89,7 @@ class MainViewController: UIViewController {
     }
     
     private func loadPages() {
-        bluditAPI.listPages(pageNumber: 1) { listPagesResponse in
+        bluditAPI.listPages(pageNumber: currentPage) { listPagesResponse in
             self.pages = listPagesResponse?.data
             self.setupTableView()
             self.pagesTable.reloadData()

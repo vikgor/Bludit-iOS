@@ -22,7 +22,7 @@ class TabBarViewController: UITabBarController {
         addChild(createNavController(vc: DraftsViewController(),
                                      title: NSLocalizedString("drafts", comment: ""),
                                      image: UIImage(systemName: "pencil.tip")))
-        addChild(createNavController(vc: ProfileViewController(),
+        addChild(createNavController(vc: SettingsViewController(),
                                      title: NSLocalizedString("profile", comment: ""),
                                      image: UIImage(systemName: "person")))
     }
