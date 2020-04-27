@@ -197,10 +197,10 @@ final class SettingsViewController: UITableViewController {
         view.addSubview(apiTokenCell)
         view.addSubview(authTokenCell)
         
-        view.addSubview(feedbackCell)
-        view.addSubview(feedback2Cell)
-        view.addSubview(checkmarkCell)
-        view.addSubview(switchCell)
+//        view.addSubview(feedbackCell)
+//        view.addSubview(feedback2Cell)
+//        view.addSubview(checkmarkCell)
+//        view.addSubview(switchCell)
         
         view.addSubview(logoutCell)
         
@@ -214,8 +214,8 @@ final class SettingsViewController: UITableViewController {
         apiTokenCell.addSubview(apiTokenTextField)
         authTokenCell.addSubview(authTokenTextField)
         
-        switchCell.addSubview(switchLabel)
-        switchCell.addSubview(onOffSwitch)
+//        switchCell.addSubview(switchLabel)
+//        switchCell.addSubview(onOffSwitch)
         
         logoutCell.addSubview(logoutButton)
         
@@ -244,10 +244,10 @@ final class SettingsViewController: UITableViewController {
             authTokenTextField.trailingAnchor.constraint(equalTo: authTokenCell.trailingAnchor, constant: 20),
             authTokenTextField.centerYAnchor.constraint(equalTo: authTokenCell.centerYAnchor),
             
-            switchLabel.leadingAnchor.constraint(equalTo: switchCell.leadingAnchor, constant: 20),
-            switchLabel.centerYAnchor.constraint(equalTo: switchCell.centerYAnchor),
-            onOffSwitch.trailingAnchor.constraint(equalTo: switchCell.trailingAnchor, constant: -20),
-            onOffSwitch.centerYAnchor.constraint(equalTo: switchCell.centerYAnchor),
+//            switchLabel.leadingAnchor.constraint(equalTo: switchCell.leadingAnchor, constant: 20),
+//            switchLabel.centerYAnchor.constraint(equalTo: switchCell.centerYAnchor),
+//            onOffSwitch.trailingAnchor.constraint(equalTo: switchCell.trailingAnchor, constant: -20),
+//            onOffSwitch.centerYAnchor.constraint(equalTo: switchCell.centerYAnchor),
             
             logoutButton.widthAnchor.constraint(equalTo: logoutCell.widthAnchor, constant: -40),
             logoutButton.centerYAnchor.constraint(equalTo: logoutCell.centerYAnchor),
@@ -334,7 +334,8 @@ final class SettingsViewController: UITableViewController {
 //MARK: - Set up TableView
 extension SettingsViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 3
+//        return 5
     }
     
     /// Setting up sections
@@ -345,11 +346,12 @@ extension SettingsViewController {
         case 1:
             return 3
         case 2:
-            return 2
-        case 3:
-            return 2
-        case 4:
             return 1
+//            return 2
+//        case 3:
+//            return 2
+//        case 4:
+//            return 1
         default:
             fatalError()
         }
@@ -383,24 +385,24 @@ extension SettingsViewController {
                 fatalError()
             }
         case 2:
-            switch indexPath.row {
-            case 0:
-                return feedbackCell
-            case 1:
-                return feedback2Cell
-            default:
-                fatalError()
-            }
-        case 3:
-            switch indexPath.row {
-            case 0:
-                return checkmarkCell
-            case 1:
-                return switchCell
-            default:
-                fatalError()
-            }
-        case 4:
+//            switch indexPath.row {
+//            case 0:
+//                return feedbackCell
+//            case 1:
+//                return feedback2Cell
+//            default:
+//                fatalError()
+//            }
+//        case 3:
+//            switch indexPath.row {
+//            case 0:
+//                return checkmarkCell
+//            case 1:
+//                return switchCell
+//            default:
+//                fatalError()
+//            }
+//        case 4:
             return logoutCell
         default:
             fatalError()
@@ -415,10 +417,10 @@ extension SettingsViewController {
         case 1:
             return "API"
         case 2:
-            return "More"
-        case 3:
-            return "More stuff for later"
-        case 4:
+//            return "More"
+//        case 3:
+//            return "More stuff for later"
+//        case 4:
             return nil
         default:
             fatalError()

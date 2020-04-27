@@ -1,6 +1,7 @@
 #  Bludit iOS Client
 
-Bludit version: 3.12
+Bludit version: 3.12. 
+API plugin version: 3.12.
 
 ### Initial setup:
 Get your API Token here:
@@ -12,6 +13,13 @@ TODO:
 - [ ] API Client
     - [ ] Fix case when host name includes slashes (e.g. CMS is located at "website.com/blog" instead of "website.com")
     - [ ] Error handling
+- [ ] Errors
+    - [ ] Auth
+        - [ ] If website doesn't use https - alert and not let in
+    - [ ] Main
+        - [ ] If details are incorrect (Client error while bluditAPI.listPages()) - show alert with “Go back” button
+- [ ] Login view
+    - [ ] Format website domain from "https://www.domain.com/" to "domain.com"
 - [ ] Main VC
     - [ ] Table view pagination
     - [ ] Request a particular page

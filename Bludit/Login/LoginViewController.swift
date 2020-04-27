@@ -144,7 +144,11 @@ class LoginViewController: UIViewController {
 //                           title: "Find me (edited)",
 //                           content: "Page found and edited")
 //        bluditAPI.deletePage(query: "find-me")
-//        bluditAPI.listSettings()
+//        bluditAPI.listSettings() { currentSettings in
+//            if let currentSettings = try? JSONEncoder().encode(currentSettings) {
+//                print(currentSettings)
+//            }
+//        }
 //        let updatedSettings = ["title": "81371 (updated)",
 //                               "github": "github.com/",
 //                               "instagram": "instagram.com/",
@@ -158,15 +162,19 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
         if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            ///Move to next textField on pressing Enter
             nextResponder.becomeFirstResponder()
         } else {
-            textField.resignFirstResponder()
-            authenticate()
+            /// Authenticate if textFields aren't empty
+            if !(websiteTextField.text == "" || apiTokenTextField.text == "" || authTokenTextField.text == "") {
+                textField.resignFirstResponder()
+                authenticate()
+            }
         }
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         if websiteTextField.text == "" || apiTokenTextField.text == "" || authTokenTextField.text == "" {
             //Disable button
             loginButton.isEnabled = false

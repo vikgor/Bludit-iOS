@@ -24,15 +24,15 @@ class BluditAPI {
     }()
     
     public init() {
+///Testing stuff, delete later obviously
 //        apiToken = "96284efd0ddf99daf78591a94321917c"
 //        authToken = "ea4348deb60c7638848d6e1888d18e2c"
-
+//        components.host = "bludit-ios.ga"
+        
         apiToken = UserDefaults.standard.string(forKey: "apiToken") ?? ""
         authToken = UserDefaults.standard.string(forKey: "authToken") ?? ""
-        
-        
+
         components.scheme = "https"
-//        components.host = "bludit-ios.ga"
         components.host = UserDefaults.standard.string(forKey: "website")
         components.queryItems = [URLQueryItem(name: "token", value: apiToken)]
     }
