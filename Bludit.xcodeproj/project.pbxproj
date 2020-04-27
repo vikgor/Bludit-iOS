@@ -43,6 +43,7 @@
 		05DB7C2F2449E3DD00B1B371 /* SettingsUpdateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DB7C2E2449E3DD00B1B371 /* SettingsUpdateResponse.swift */; };
 		05DB7C312449E8C000B1B371 /* CategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DB7C302449E8C000B1B371 /* CategoriesResponse.swift */; };
 		05F7AFAF243A6FB900BF3AB3 /* PageContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */; };
+		05FBC25E24548C15007555E6 /* SettingsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FBC25D24548C15007555E6 /* SettingsTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		05DB7C2E2449E3DD00B1B371 /* SettingsUpdateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUpdateResponse.swift; sourceTree = "<group>"; };
 		05DB7C302449E8C000B1B371 /* CategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesResponse.swift; sourceTree = "<group>"; };
 		05F7AFAE243A6FB900BF3AB3 /* PageContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentsViewController.swift; sourceTree = "<group>"; };
+		05FBC25D24548C15007555E6 /* SettingsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				05B00CD324373AA7002D6A11 /* SettingsViewController.swift */,
+				05FBC25D24548C15007555E6 /* SettingsTextField.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FBC25E24548C15007555E6 /* SettingsTextField.swift in Sources */,
 				05B00CF82438DCAC002D6A11 /* CreateNewPageViewController.swift in Sources */,
 				05B00CA224369D85002D6A11 /* DeletedPageResponse.swift in Sources */,
 				05D12F48244603D700C35CD8 /* ValueOrFalse.swift in Sources */,

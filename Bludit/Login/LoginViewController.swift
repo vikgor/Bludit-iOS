@@ -10,15 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let bluditAPI = BluditAPI()
-    var websiteTextField = UITextField()
-    var apiTokenTextField = UITextField()
-    var loginButton = UIButton()
+    private let bluditAPI = BluditAPI()
+    private var websiteTextField = UITextField()
+    private var apiTokenTextField = UITextField()
+    private var authTokenTextField = UITextField()
+    private var loginButton = UIButton()
+    private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         testRequests()
-        
         view.backgroundColor = .systemBackground
         setupSubviews()
     }
@@ -52,6 +53,17 @@ class LoginViewController: UIViewController {
         apiTokenTextField.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
         self.apiTokenTextField = apiTokenTextField
         
+        /// Auth Token text field
+        let authTokenTextField = UITextField()
+        authTokenTextField.textAlignment = .left
+        authTokenTextField.autocapitalizationType = .none
+        authTokenTextField.delegate = self
+        authTokenTextField.tag = 2
+        authTokenTextField.returnKeyType = .done
+        authTokenTextField.placeholder = "Auth Token"
+        authTokenTextField.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+        self.authTokenTextField = authTokenTextField
+        
         /// Login button
         let loginButton = UIButton()
         loginButton.backgroundColor = .systemBlue
@@ -60,9 +72,9 @@ class LoginViewController: UIViewController {
         loginButton.setTitle("Login", for: .normal)
         loginButton.addTarget(self,
                               action: #selector(authenticate),
-                              for: UIControl.Event.touchUpInside)
-//        loginButton.isEnabled = false
-//        loginButton.alpha = 0.5
+                              for: .touchUpInside)
+        loginButton.isEnabled = false
+        loginButton.alpha = 0.5
         self.loginButton = loginButton
         
         ///Stack view
@@ -72,6 +84,7 @@ class LoginViewController: UIViewController {
         stackView.addArrangedSubview(label)
         stackView.addArrangedSubview(websiteTextField)
         stackView.addArrangedSubview(apiTokenTextField)
+        stackView.addArrangedSubview(authTokenTextField)
         stackView.addArrangedSubview(loginButton)
         stackView.layoutSubviews()
         view.addSubview(stackView)
@@ -87,15 +100,17 @@ class LoginViewController: UIViewController {
             stackView.widthAnchor.constraint(equalTo: margins.widthAnchor),
             websiteTextField.widthAnchor.constraint(equalTo: margins.widthAnchor),
             apiTokenTextField.widthAnchor.constraint(equalTo: margins.widthAnchor),
+            authTokenTextField.widthAnchor.constraint(equalTo: margins.widthAnchor),
             loginButton.widthAnchor.constraint(equalTo: margins.widthAnchor),
         ])
         stackView.spacing = 20.0
     }
 
-    @objc func authenticate() {
-        let defaults = UserDefaults.standard
+    @objc private func authenticate() {
+        defaults.set(true, forKey: "authenticated")
         defaults.set(websiteTextField.text, forKey: "website")
-        defaults.set(apiTokenTextField.text, forKey: "token")
+        defaults.set(apiTokenTextField.text, forKey: "apiToken")
+        defaults.set(authTokenTextField.text, forKey: "authToken")
         
         if Reachability.isConnectedToNetwork() {
             showNextScreen()
@@ -106,7 +121,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func showNextScreen() {
+    private func showNextScreen() {
         DispatchQueue.main.async {
             let newViewController = TabBarViewController()
             newViewController.modalPresentationStyle = .fullScreen
@@ -115,7 +130,7 @@ class LoginViewController: UIViewController {
     }
     
     /// Testing basic requests. Need it before I make a mock server and test everything properly
-    func testRequests() {
+    private func testRequests() {
 //        bluditAPI.listPages() { listPagesResponse in print(listPagesResponse as Any) }
 //        bluditAPI.findPage(query: "An") { foundPageResponse in print(foundPageResponse) }
 //        bluditAPI.findPage(query: "Anot") { foundPageResponse in print(foundPageResponse) }
@@ -152,7 +167,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if websiteTextField.text == "" || apiTokenTextField.text == "" {
+        if websiteTextField.text == "" || apiTokenTextField.text == "" || authTokenTextField.text == "" {
             //Disable button
             loginButton.isEnabled = false
             loginButton.alpha = 0.5

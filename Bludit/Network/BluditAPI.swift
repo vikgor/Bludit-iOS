@@ -12,8 +12,8 @@ class BluditAPI {
     
     public static let shared = BluditAPI()
     private var components = URLComponents()
-    private let apiToken = "96284efd0ddf99daf78591a94321917c"
-    private let authToken = "ea4348deb60c7638848d6e1888d18e2c"
+    private let apiToken: String
+    private let authToken: String
     private let jsonDecoder: JSONDecoder = {
        let jsonDecoder = JSONDecoder()
        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -24,8 +24,16 @@ class BluditAPI {
     }()
     
     public init() {
+//        apiToken = "96284efd0ddf99daf78591a94321917c"
+//        authToken = "ea4348deb60c7638848d6e1888d18e2c"
+
+        apiToken = UserDefaults.standard.string(forKey: "apiToken") ?? ""
+        authToken = UserDefaults.standard.string(forKey: "authToken") ?? ""
+        
+        
         components.scheme = "https"
-        components.host = "8137147.xyz"
+//        components.host = "bludit-ios.ga"
+        components.host = UserDefaults.standard.string(forKey: "website")
         components.queryItems = [URLQueryItem(name: "token", value: apiToken)]
     }
     
@@ -226,7 +234,7 @@ class BluditAPI {
     }
     
     /// List settings
-    public func listSettings() {
+    public func listSettings(completion: @escaping (SettingsResponse?) -> Void) {
         components.path = APIEndpoints.settings.rawValue
         let parameters = ["token": apiToken]
         let allowedParameters = [
@@ -237,7 +245,8 @@ class BluditAPI {
         universalRequest(httpMethod: "GET",
                          url: url,
                          parameters: parameters) { (response: SettingsResponse) in
-                            print("Response is \(response)")
+                            print(response)
+                            completion(response)
         }
     }
     

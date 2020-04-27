@@ -19,12 +19,12 @@ class TabBarViewController: UITabBarController {
         addChild(createNavController(vc: MainViewController(),
                                      title: NSLocalizedString("pages", comment: ""),
                                      image: UIImage(systemName: "list.dash")))
-        addChild(createNavController(vc: DraftsViewController(),
-                                     title: NSLocalizedString("drafts", comment: ""),
-                                     image: UIImage(systemName: "pencil.tip")))
+//        addChild(createNavController(vc: DraftsViewController(),
+//                                     title: NSLocalizedString("drafts", comment: ""),
+//                                     image: UIImage(systemName: "pencil.tip")))
         addChild(createNavController(vc: SettingsViewController(),
-                                     title: NSLocalizedString("profile", comment: ""),
-                                     image: UIImage(systemName: "person")))
+                                     title: NSLocalizedString("settings", comment: ""),
+                                     image: UIImage(systemName: "gear")))
     }
     
     private func createNavController(vc: UIViewController,

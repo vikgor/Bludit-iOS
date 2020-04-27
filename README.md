@@ -12,8 +12,6 @@ TODO:
 - [ ] API Client
     - [ ] Fix case when host name includes slashes (e.g. CMS is located at "website.com/blog" instead of "website.com")
     - [ ] Error handling
-- [ ] Authenticate
-    - [ ] Decide when to ask for an auth key
 - [ ] Main VC
     - [ ] Table view pagination
     - [ ] Request a particular page
@@ -24,13 +22,11 @@ TODO:
         - [ ] Change title dynamically from pageTitleTextField (like Mail app)
 - [ ] Fix new lines after editing a page (maybe it's an API issue)
 - [ ] Page view
-    - [ ] Pass data from table view more elegantly
+    - [ ] Pass data from table view more elegantly?
     - [ ] Cache cover image, check threads, and if everything else is ok with cover image
 - [ ] Settings view
-    - [ ] Show alert when settings were successfully saved
-    - [ ] Retrieve current settings
-    - [ ] Edit api token, auth token
     - [ ] Log out button
+        - [ ] Clear the cache
 - [ ] Clean the code
     - [ ] add 'final' to the classes
     - [ ] make private when needed

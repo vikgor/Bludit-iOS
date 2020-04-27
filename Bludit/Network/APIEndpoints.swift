@@ -9,13 +9,13 @@
 import Foundation
 
 public enum APIEndpoints: String {
-    //fix the slashes in host name
-    case pages = "/1/bludit/api/pages"
-    case tags = "/1/bludit/api/tags"
-    case categories = "/1/bludit/api/categories"
-    case settings = "/1/bludit/api/settings"
-    case users = "/1/bludit/api/users"
-    case files = "/1/bludit/api/files"
+    case pages = "/api/pages"
+    case tags = "/api/tags"
+    case categories = "/api/categories"
+    case settings = "/api/settings"
+    case users = "/api/users"
+    case files = "/api/files"
+    case images = "/api/images"
     
     // (GET) /api/pages
     // (GET) /api/pages/<key>

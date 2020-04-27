@@ -31,6 +31,7 @@ class MainViewController: UIViewController {
         setupPagesTable()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         pagesTable.refreshControl = refreshControl
+        loadSettings()
     }
     
     //MARK: - Set up UI
@@ -94,6 +95,15 @@ class MainViewController: UIViewController {
             self.setupTableView()
             self.pagesTable.reloadData()
             self.indicator.removeFromSuperview()
+        }
+    }
+    
+    private func loadSettings() {
+        ///Fetching the settings and saving them for later
+        bluditAPI.listSettings() { currentSettings in
+            if let currentSettings = try? JSONEncoder().encode(currentSettings) {
+                UserDefaults.standard.set(currentSettings, forKey: "settings")
+            }
         }
     }
     
