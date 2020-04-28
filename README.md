@@ -18,8 +18,6 @@ TODO:
         - [ ] If website doesn't use https - alert and not let in
     - [ ] Main
         - [ ] If details are incorrect (Client error while bluditAPI.listPages()) - show alert with “Go back” button
-- [ ] Login view
-    - [ ] Format website domain from "https://www.domain.com/" to "domain.com"
 - [ ] Main VC
     - [ ] Table view pagination
     - [ ] Request a particular page
@@ -32,6 +30,8 @@ TODO:
 - [ ] Page view
     - [ ] Pass data from table view more elegantly?
     - [ ] Cache cover image, check threads, and if everything else is ok with cover image
+    - [ ] Image size (width)
+    - [ ] Save HTML when editing
 - [ ] Settings view
     - [ ] Log out button
         - [ ] Clear the cache

@@ -240,10 +240,12 @@ extension MainViewController: UITableViewDelegate {
                     destination.initialPageTags = pageTags
                 }
                 if let pageContents = self.pages?[indexPath.row].content {
-                    ///Converting raw html string into a readable string without html tags (before I figure out how to correctly show html in UILable)
-                    if let contents = pageContents.htmlAttributedString(color: nil)?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) {
-                        destination.initialPageContents = contents
-                    }
+//                    ///Converting raw html string into a readable string without html tags (before I figure out how to correctly show html in UILable)
+//                    if let contents = pageContents.htmlAttributedString(color: nil)?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) {
+//                        destination.initialPageContents = contents
+//                    }
+                    destination.initialPageContents = pageContents
+                    
                 }
                 if let pageKey = self.pages?[indexPath.row].key {
                     destination.pageKey = pageKey

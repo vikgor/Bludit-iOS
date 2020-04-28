@@ -58,7 +58,6 @@ class PageContentsViewController: UIViewController {
         pageContentsTextView.isEditable = false
         pageContentsTextView.isSelectable = true
         pageContentsTextView.attributedText = pageContents?.htmlAttributedString(color: .label)
-        pageContentsTextView.font = UIFont.systemFont(ofSize: 16)
         
         ///Page tags
         let tagsLabel = UILabel()

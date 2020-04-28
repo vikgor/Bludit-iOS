@@ -26,6 +26,7 @@ extension String {
               body {
                 color: \(color?.htmlRGBA ?? "gray");
                 font-family: -apple-system;
+                font-size: 16px;
               }
             </style>
           </head>
@@ -48,5 +49,18 @@ extension String {
         }
 
         return attributedString
+    }
+}
+
+/// Remove "http://" or "https://" from the website address
+extension String {
+    var checkedForHTTP: String {
+        if self.contains("https://") {
+            return self.replacingOccurrences(of: "https://", with: "")
+        } else if self.contains("http://") {
+            return self.replacingOccurrences(of: "http://", with: "")
+        } else {
+            return self
+        }
     }
 }
