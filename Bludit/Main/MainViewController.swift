@@ -194,7 +194,7 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
         cell.textLabel?.text = pages?[indexPath.row].title
-        let content = pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        let content = pages?[indexPath.row].content.htmlAttributedString(color: nil)?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.detailTextLabel?.text = content
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -209,7 +209,8 @@ extension MainViewController: UITableViewDelegate {
             let destination = PageContentsViewController()
             destination.pageTitle = self.pages?[indexPath.row].title
             destination.pageTags = self.pages?[indexPath.row].tags
-            let content = self.pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+//            let content = self.pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+            let content = self.pages?[indexPath.row].content
             destination.pageContents = content
             destination.coverImage = self.pages?[indexPath.row].coverImage.value
             self.navigationController?.pushViewController(destination, animated: true)
@@ -240,7 +241,7 @@ extension MainViewController: UITableViewDelegate {
                 }
                 if let pageContents = self.pages?[indexPath.row].content {
                     ///Converting raw html string into a readable string without html tags (before I figure out how to correctly show html in UILable)
-                    if let contents = pageContents.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) {
+                    if let contents = pageContents.htmlAttributedString(color: nil)?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) {
                         destination.initialPageContents = contents
                     }
                 }

@@ -6,18 +6,47 @@
 //  Copyright © 2020 Viktor Gordienko. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-///Adds dash between words in a string for the correct API request
+/// Adds dash between words in a string for the correct API request
 extension String {
     var convertedForTheAPIRequest: String {
         return self.lowercased().replacingOccurrences(of: " ", with: "-")
     }
 }
 
-///Converts HTML string to a `NSAttributedString`
+/// Converts HTML string to a `NSAttributedString`
 extension String {
-    var htmlAttributedString: NSAttributedString? {
-        return try? NSAttributedString(data: Data(utf8), options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+    func htmlAttributedString(color: UIColor?) -> NSAttributedString? {
+        let htmlTemplate = """
+        <!doctype html>
+        <html>
+          <head>
+            <style>
+              body {
+                color: \(color?.htmlRGBA ?? "gray");
+                font-family: -apple-system;
+              }
+            </style>
+          </head>
+          <body>
+            \(self)
+          </body>
+        </html>
+        """
+
+        guard let data = htmlTemplate.data(using: .utf16) else {
+            return nil
+        }
+
+        guard let attributedString = try? NSAttributedString(
+            data: data,
+            options: [.documentType: NSAttributedString.DocumentType.html],
+            documentAttributes: nil
+            ) else {
+            return nil
+        }
+
+        return attributedString
     }
 }

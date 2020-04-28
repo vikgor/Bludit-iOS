@@ -36,14 +36,15 @@ class PageContentsViewController: UIViewController {
         
         if let coverImage = coverImage {
             if coverImage != "" {
-                let url = URL(string: coverImage)
-                DispatchQueue.global().async {
-                    let data = try? Data(contentsOf: url!)
-                    DispatchQueue.main.async {
-                        coverImageView.image = UIImage(data: data!)
+                if let url = URL(string: coverImage) {
+                    DispatchQueue.global().async {
+                        if let data = try? Data(contentsOf: url) {
+                            DispatchQueue.main.async {
+                                coverImageView.image = UIImage(data: data)
+                            }
+                        }
                     }
                 }
-                coverImageView.image = UIImage(named: coverImage)
                 coverImageView.backgroundColor = UIColor.systemBackground
                 coverImageView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
                 coverImageView.contentMode = .scaleAspectFill
@@ -54,10 +55,10 @@ class PageContentsViewController: UIViewController {
         ///Page contents
         let pageContentsTextView = UITextView()
         pageContentsTextView.isScrollEnabled = false
-        pageContentsTextView.font = UIFont.systemFont(ofSize: 16)
         pageContentsTextView.isEditable = false
         pageContentsTextView.isSelectable = true
-        pageContentsTextView.text = pageContents
+        pageContentsTextView.attributedText = pageContents?.htmlAttributedString(color: .label)
+        pageContentsTextView.font = UIFont.systemFont(ofSize: 16)
         
         ///Page tags
         let tagsLabel = UILabel()

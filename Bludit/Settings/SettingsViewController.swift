@@ -432,21 +432,21 @@ extension SettingsViewController {
         ///Deselect any row
         tableView.deselectRow(at: indexPath, animated: true)
         
-        ///1st row in 4th section
-        if indexPath.section == 3 && indexPath.row == 0 {
-            if checkmarkCell.accessoryType == .none {
-                checkmarkCell.accessoryType = .checkmark
-            } else {
-                checkmarkCell.accessoryType = .none
-            }
-        }
-        ///1st row in 3rd section
-        if indexPath.section == 2 && indexPath.row == 0 {
-            DispatchQueue.main.async {
-                let destination = SettingsTextField(style: .grouped, navigationTitle: (tableView.cellForRow(at: indexPath)?.textLabel?.text)!)
-                self.navigationController?.pushViewController(destination, animated: true)
-            }
-        }
+//        ///1st row in 4th section
+//        if indexPath.section == 3 && indexPath.row == 0 {
+//            if checkmarkCell.accessoryType == .none {
+//                checkmarkCell.accessoryType = .checkmark
+//            } else {
+//                checkmarkCell.accessoryType = .none
+//            }
+//        }
+//        ///1st row in 3rd section
+//        if indexPath.section == 2 && indexPath.row == 0 {
+//            DispatchQueue.main.async {
+//                let destination = SettingsTextField(style: .grouped, navigationTitle: (tableView.cellForRow(at: indexPath)?.textLabel?.text)!)
+//                self.navigationController?.pushViewController(destination, animated: true)
+//            }
+//        }
     }
     
 }
