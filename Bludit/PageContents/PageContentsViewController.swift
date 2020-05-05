@@ -30,8 +30,8 @@ class PageContentsViewController: UIViewController {
         
     private func setupContentView() {
         
-        ///Page cover image
-        ///If  cover image is not set up for the page, don't show the view. Otherwise take the URL from the page details
+        /// Page cover image
+        /// If  cover image is not set up for the page, don't show the view. Otherwise take the URL from the page details
         let coverImageView = UIImageView()
         
         if let coverImage = coverImage {
@@ -52,20 +52,20 @@ class PageContentsViewController: UIViewController {
             }
         }
         
-        ///Page contents
+        /// Page contents
         let pageContentsTextView = UITextView()
         pageContentsTextView.isScrollEnabled = false
         pageContentsTextView.isEditable = false
         pageContentsTextView.isSelectable = true
         pageContentsTextView.attributedText = pageContents?.htmlAttributedString(color: .label)
         
-        ///Page tags
+        /// Page tags
         let tagsLabel = UILabel()
         if pageTags != "" {
             tagsLabel.text  = "Tags: \(pageTags!)"
         }
         
-        ///Stack View
+        /// Stack View
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
@@ -75,15 +75,15 @@ class PageContentsViewController: UIViewController {
         stackView.addArrangedSubview(pageContentsTextView)
         stackView.addArrangedSubview(tagsLabel)
         
-        ///Scroll View
+        /// Scroll View
         let scrollView = UIScrollView()
         scrollView.addSubview(stackView)
         view.addSubview(scrollView)
         
-        ///Constraints
+        /// Constraints
         let margins = view.layoutMarginsGuide
         
-        ///Stack view constraints
+        /// Stack view constraints
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -93,7 +93,7 @@ class PageContentsViewController: UIViewController {
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
                 
-        ///Scroll view constraints
+        /// Scroll view constraints
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),

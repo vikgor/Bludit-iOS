@@ -260,7 +260,7 @@ final class SettingsViewController: UITableViewController {
     private func fetchCurrentSettings() {
         if let settings = defaults.data(forKey: "settings"),
             
-            ///Getting the general settings from UserDefaults
+            /// Getting the general settings from UserDefaults
             let decodedSettings = try? JSONDecoder().decode(SettingsResponse.self, from: settings) {
             let currentSettings = decodedSettings.data
             titleTextField.text = currentSettings.title
@@ -278,7 +278,7 @@ final class SettingsViewController: UITableViewController {
     
     /// Save current settings
     @objc private func saveSettings() {
-        ///Save general website settings and upload them
+        /// Save general website settings and upload them
         let updatedSettings = ["title": titleTextField.text as Any,
                                "slogan": sloganTextField.text as Any,
                                "description": descriptionTextField.text as Any,
@@ -286,7 +286,7 @@ final class SettingsViewController: UITableViewController {
                                "markdownParser": onOffSwitch.isOn] as [String : Any]
         bluditAPI.editSettings(updatedSettings: updatedSettings)
         
-        ///Save API-related settings to UserDefaults
+        /// Save API-related settings to UserDefaults
         defaults.set(websiteTextField.text, forKey: "website")
         defaults.set(apiTokenTextField.text, forKey: "apiToken")
         defaults.set(authTokenTextField.text, forKey: "authToken")
@@ -429,10 +429,10 @@ extension SettingsViewController {
     
     /// Tapping on a cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ///Deselect any row
+        /// Deselect any row
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        ///1st row in 4th section
+//        /// 1st row in 4th section
 //        if indexPath.section == 3 && indexPath.row == 0 {
 //            if checkmarkCell.accessoryType == .none {
 //                checkmarkCell.accessoryType = .checkmark
@@ -440,7 +440,7 @@ extension SettingsViewController {
 //                checkmarkCell.accessoryType = .none
 //            }
 //        }
-//        ///1st row in 3rd section
+//        /// 1st row in 3rd section
 //        if indexPath.section == 2 && indexPath.row == 0 {
 //            DispatchQueue.main.async {
 //                let destination = SettingsTextField(style: .grouped, navigationTitle: (tableView.cellForRow(at: indexPath)?.textLabel?.text)!)

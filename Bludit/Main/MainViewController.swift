@@ -15,7 +15,15 @@ class MainViewController: UIViewController {
     private var currentPage = 1
     private let refreshControl = UIRefreshControl()
     private var indicator = UIActivityIndicatorView()
-
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var filteredPages: [PageDetails]?
+    private var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    private var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
+    
     let pagesTable: UITableView = {
         let pages = UITableView()
         pages.translatesAutoresizingMaskIntoConstraints = false
@@ -53,11 +61,10 @@ class MainViewController: UIViewController {
     }
     
     private func setupSearchbar() {
-        let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
-        search.obscuresBackgroundDuringPresentation = false
-        search.searchBar.placeholder = "Search Pages"
-        self.navigationItem.searchController = search
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Pages"
+        self.navigationItem.searchController = searchController
         definesPresentationContext = true
     }
     
@@ -102,7 +109,7 @@ class MainViewController: UIViewController {
     }
     
     private func loadSettings() {
-        ///Fetching the settings and saving them for later
+        /// Fetching the settings and saving them for later
         bluditAPI.listSettings() { currentSettings in
             if let currentSettings = try? JSONEncoder().encode(currentSettings) {
                 UserDefaults.standard.set(currentSettings, forKey: "settings")
@@ -184,20 +191,43 @@ class MainViewController: UIViewController {
 //        }
 //
 //    }
-    
+    private func filterContentForSearchText(_ searchText: String,
+                                            type: PageDetails.Type? = nil) {
+        if let pages = self.pages {
+            filteredPages = pages.filter { (page: PageDetails) -> Bool in
+                return page.title.lowercased().contains(searchText.lowercased())
+            }
+            pagesTable.reloadData()
+        }
     }
+}
 
 
 extension MainViewController: UITableViewDataSource {
+    
     /// Count the number of pages
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        pages?.count ?? 0
+        if isFiltering {
+            return filteredPages?.count ?? 0
+        }
+        return pages?.count ?? 0
     }
+    
     /// Set up cells with a label and detailedText
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
-        cell.textLabel?.text = pages?[indexPath.row].title
-        let content = pages?[indexPath.row].content.htmlAttributedString(color: nil)?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        
+        /// Check if the pages array is changed because of searching
+        let page: PageDetails?
+        if isFiltering {
+            page = filteredPages?[indexPath.row]
+        } else {
+            page = pages?[indexPath.row]
+        }
+        
+        /// Set up cells
+        cell.textLabel?.text = page?.title
+        let content = page?.content.htmlAttributedString(color: nil)?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         cell.detailTextLabel?.text = content
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -205,52 +235,68 @@ extension MainViewController: UITableViewDataSource {
 }
 
 extension MainViewController: UITableViewDelegate {
+    
     /// Tapping on a cell and going to the Page contents
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         pagesTable.deselectRow(at: indexPath, animated: true)
         DispatchQueue.main.async {
             let destination = PageContentsViewController()
-            destination.pageTitle = self.pages?[indexPath.row].title
-            destination.pageTags = self.pages?[indexPath.row].tags
-//            let content = self.pages?[indexPath.row].content.htmlAttributedString?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-            let content = self.pages?[indexPath.row].content
+            
+            /// Check if the pages array is changed because of searching
+            let page: PageDetails?
+            if self.isFiltering {
+                page = self.filteredPages?[indexPath.row]
+            } else {
+                page = self.pages?[indexPath.row]
+            }
+            
+            /// Send the page details
+            destination.pageTitle = page?.title
+            destination.pageTags = page?.tags
+            let content = page?.content
             destination.pageContents = content
-            destination.coverImage = self.pages?[indexPath.row].coverImage.value
+            destination.coverImage = page?.coverImage.value
             self.navigationController?.pushViewController(destination, animated: true)
         }
     }
+    
     /// Editing the table view. Swipe to delete or adit a page.
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        ///Delete page
+        
+        /// Check if the pages array is changed because of searching
+        let page: PageDetails?
+        if self.isFiltering {
+            page = self.filteredPages?[indexPath.row]
+        } else {
+            page = self.pages?[indexPath.row]
+        }
+        
+        /// Delete page
         let deleteItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, completion) in
             print("Deleted")
-            if let query = self.pages?[indexPath.row].key {
+            if let query = page?.key {
                 self.bluditAPI.deletePage(query: query)
                 self.pages?.remove(at: indexPath.row)
             }
             completion(true)
             tableView.reloadData()
         }
-        ///Edit page
+        
+        /// Edit page
         let editItem = UIContextualAction(style: .normal, title: "Edit") {  (contextualAction, view, completion) in
             print("Edited")
             DispatchQueue.main.async {
                 let destination = EditPageViewController()
-                if let pageTitle = self.pages?[indexPath.row].title {
+                if let pageTitle = page?.title {
                     destination.initialPageTitle = pageTitle
                 }
-                if let pageTags = self.pages?[indexPath.row].tags {
+                if let pageTags = page?.tags {
                     destination.initialPageTags = pageTags
                 }
-                if let pageContents = self.pages?[indexPath.row].content {
-//                    ///Converting raw html string into a readable string without html tags (before I figure out how to correctly show html in UILable)
-//                    if let contents = pageContents.htmlAttributedString(color: nil)?.string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) {
-//                        destination.initialPageContents = contents
-//                    }
+                if let pageContents = page?.content {
                     destination.initialPageContents = pageContents
-                    
                 }
-                if let pageKey = self.pages?[indexPath.row].key {
+                if let pageKey = page?.key {
                     destination.pageKey = pageKey
                 }
                 let navController = UINavigationController(rootViewController: destination)
@@ -264,6 +310,13 @@ extension MainViewController: UITableViewDelegate {
 
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+    
+    /// This is what the API search looks like, it can only find the page with the exact keyword
+    /// I will delete it later
+    func updateSearchResults2(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
             bluditAPI.findPage(query: text) { foundPageResponse in
                 if let response = foundPageResponse {

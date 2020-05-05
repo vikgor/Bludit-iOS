@@ -103,7 +103,7 @@ class CreateNewPageViewController: UIViewController {
         self.navigationController?.present(alertController, animated: true, completion: nil)
     }
 
-    ///Check if both the title and contents is empty
+    /// Check if both the title and contents is empty
     private func bothInputsAreEmpty() -> Bool {
         getTextFromInputs()
         if ((pageTitle != "") || (pageContents != "")) {
@@ -113,7 +113,7 @@ class CreateNewPageViewController: UIViewController {
         }
     }
 
-    ///Check if either the title or contents is empty
+    /// Check if either the title or contents is empty
     private func someInputsAreEmpty() -> Bool {
         getTextFromInputs()
         if ((pageTitle != "") && (pageContents != "")) {
@@ -127,7 +127,7 @@ class CreateNewPageViewController: UIViewController {
         let cellTitle = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextFieldInTableViewCell
         let cellTags = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldInTableViewCell
         let cellContents = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextViewInTableViewCell
-        ///Assign text from inputs to variables=
+        /// Assign text from inputs to variables=
         pageTitle = cellTitle.textField?.text
         pageTags = cellTags.textField?.text
         pageContents = cellContents.textView?.text

@@ -103,7 +103,7 @@ class EditPageViewController: UIViewController {
         self.navigationController?.present(alertController, animated: true, completion: nil)
     }
     
-    ///Check if both the title and contents is empty
+    /// Check if both the title and contents is empty
     private func bothInputsAreEmpty() -> Bool {
         getTextFromInputs()
         if ((pageTitle != "") || (pageContents != "")) {
@@ -113,7 +113,7 @@ class EditPageViewController: UIViewController {
         }
     }
     
-    ///Check if either the title or contents is empty
+    /// Check if either the title or contents is empty
     private func someInputsAreEmpty() -> Bool {
         getTextFromInputs()
         if ((pageTitle != "") && (pageContents != "")) {
@@ -123,7 +123,7 @@ class EditPageViewController: UIViewController {
         }
     }
     
-    ///Check if nothing changed
+    /// Check if nothing changed
     private func nothingChanged() -> Bool {
         getTextFromInputs()
         if ((pageTitle != initialPageTitle) || (pageContents != initialPageContents) || (pageTags != initialPageTags)) {
@@ -137,7 +137,7 @@ class EditPageViewController: UIViewController {
         let cellTitle = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextFieldInTableViewCell
         let cellTags = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldInTableViewCell
         let cellContents = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextViewInTableViewCell
-        ///Assign text from inputs to variables=
+        /// Assign text from inputs to variables=
         if let pageTitle = cellTitle.textField?.text {
             self.pageTitle = pageTitle
         }

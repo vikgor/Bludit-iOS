@@ -27,7 +27,7 @@ class TextFieldInTableViewCell: UITableViewCell {
 
     private func setupSubviews(placeholder: String, text: String) {
         
-        ///Stack view
+        /// Stack view
         let stackView = UIStackView()
         stackView.distribution = .fill
         stackView.alignment = .leading

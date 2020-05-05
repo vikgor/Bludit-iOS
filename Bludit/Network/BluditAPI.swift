@@ -256,7 +256,7 @@ class BluditAPI {
         var parameters: [String: Any] = ["token": apiToken,
                                          "authentication": authToken]
         let url = components.url!
-        ///Going through the updatedSetting and adding them to the parameters
+        /// Going through the updatedSetting and adding them to the parameters
         for updatedSetting in updatedSettings {
             parameters[updatedSetting.key] = updatedSetting.value
         }

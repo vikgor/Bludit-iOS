@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
         loginButton.alpha = 0.5
         self.loginButton = loginButton
         
-        ///Stack view
+        /// Stack view
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -89,7 +89,7 @@ class LoginViewController: UIViewController {
         stackView.layoutSubviews()
         view.addSubview(stackView)
         
-        ///Constraints
+        /// Constraints
         let margins = view.layoutMarginsGuide
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -162,7 +162,7 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
         if let nextResponder = textField.superview?.viewWithTag(nextTag) {
-            ///Move to next textField on pressing Enter
+            /// Move to next textField on pressing Enter
             nextResponder.becomeFirstResponder()
         } else {
             /// Authenticate if textFields aren't empty
