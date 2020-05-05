@@ -21,8 +21,8 @@ TODO:
 - [ ] Main VC
     - [ ] Table view pagination
     - [ ] Request a particular page
-        - [ ] Correctly set up UISearchController with Scope bars for published/sticky/draft/static
-        - [ ] Fix deleting the found page
+        - [ ] Instead of default API page request try to seacrh through the downloaded array (this way you can find by couple of letters instead of the whole keyword)  
+        - [ ] Scope bars for published/sticky/draft/static
     - [ ] Create a new page
         - [ ] Add a send button on the right like in Mail and Messages apps
         - [ ] Change title dynamically from pageTitleTextField (like Mail app)

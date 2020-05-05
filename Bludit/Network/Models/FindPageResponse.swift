@@ -11,5 +11,5 @@ import Foundation
 public struct FindPageResponse: Codable {
     public let status: String
     public let message: String
-    public let data: PageDetails
+    public let data: PageDetails?
 }

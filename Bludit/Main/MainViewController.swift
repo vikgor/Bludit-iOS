@@ -55,7 +55,10 @@ class MainViewController: UIViewController {
     private func setupSearchbar() {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search Pages"
         self.navigationItem.searchController = search
+        definesPresentationContext = true
     }
     
     private func setupPagesTable() {
@@ -263,7 +266,11 @@ extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text, !text.isEmpty {
             bluditAPI.findPage(query: text) { foundPageResponse in
-                self.pages = Array(arrayLiteral: foundPageResponse!.data)
+                if let response = foundPageResponse {
+                    if let data = response.data {
+                        self.pages = Array(arrayLiteral: data)
+                    }
+                }
                 self.setupTableView()
                 self.pagesTable.reloadData()
             }
