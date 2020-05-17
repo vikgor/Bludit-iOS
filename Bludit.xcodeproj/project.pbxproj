@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0599519C2471631A00E3FD15 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599519B2471631A00E3FD15 /* SettingsInteractor.swift */; };
+		0599519E2471632400E3FD15 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599519D2471632400E3FD15 /* SettingsPresenter.swift */; };
+		059951A024716A8000E3FD15 /* CellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599519F24716A8000E3FD15 /* CellLabel.swift */; };
+		059951A324716E2200E3FD15 /* TextFieldInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059951A224716E2200E3FD15 /* TextFieldInCell.swift */; };
 		05A0D445245891FA005B0D9D /* UIColorExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0D444245891FA005B0D9D /* UIColorExtenstion.swift */; };
 		05B00C622435D6CD002D6A11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C612435D6CD002D6A11 /* AppDelegate.swift */; };
 		05B00C642435D6CD002D6A11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B00C632435D6CD002D6A11 /* SceneDelegate.swift */; };
@@ -65,6 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0599519B2471631A00E3FD15 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		0599519D2471632400E3FD15 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		0599519F24716A8000E3FD15 /* CellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellLabel.swift; sourceTree = "<group>"; };
+		059951A224716E2200E3FD15 /* TextFieldInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInCell.swift; sourceTree = "<group>"; };
 		05A0D444245891FA005B0D9D /* UIColorExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtenstion.swift; sourceTree = "<group>"; };
 		05B00C5E2435D6CD002D6A11 /* Bludit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bludit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B00C612435D6CD002D6A11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +147,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		059951A124716D0D00E3FD15 /* Next view in settings */ = {
+			isa = PBXGroup;
+			children = (
+				05FBC25D24548C15007555E6 /* SettingsTextField.swift */,
+			);
+			path = "Next view in settings";
+			sourceTree = "<group>";
+		};
+		059951A424716E3B00E3FD15 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0599519F24716A8000E3FD15 /* CellLabel.swift */,
+				059951A224716E2200E3FD15 /* TextFieldInCell.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		05B00C552435D6CD002D6A11 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +198,7 @@
 				05B00CF52438DC60002D6A11 /* CreateNewPage */,
 				05B00CC924373A4F002D6A11 /* Drafts */,
 				05B00CCA24373A5D002D6A11 /* Settings */,
+				059951A424716E3B00E3FD15 /* Models */,
 				05B00C932435D789002D6A11 /* Network */,
 				05B00C6F2435D6D4002D6A11 /* Info.plist */,
 			);
@@ -249,7 +275,9 @@
 			isa = PBXGroup;
 			children = (
 				05B00CD324373AA7002D6A11 /* SettingsViewController.swift */,
-				05FBC25D24548C15007555E6 /* SettingsTextField.swift */,
+				0599519B2471631A00E3FD15 /* SettingsInteractor.swift */,
+				0599519D2471632400E3FD15 /* SettingsPresenter.swift */,
+				059951A124716D0D00E3FD15 /* Next view in settings */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -467,6 +495,7 @@
 				05B00CF82438DCAC002D6A11 /* CreateNewPageViewController.swift in Sources */,
 				05B00CA224369D85002D6A11 /* DeletedPageResponse.swift in Sources */,
 				05D12F48244603D700C35CD8 /* ValueOrFalse.swift in Sources */,
+				059951A024716A8000E3FD15 /* CellLabel.swift in Sources */,
 				05B00CF1243778A4002D6A11 /* PagesListCell.swift in Sources */,
 				05B00CCD24373A85002D6A11 /* MainViewController.swift in Sources */,
 				05B00CFB243945EB002D6A11 /* TextFieldInTableViewCell.swift in Sources */,
@@ -474,9 +503,11 @@
 				05DB7C2F2449E3DD00B1B371 /* SettingsUpdateResponse.swift in Sources */,
 				05B00C922435D736002D6A11 /* BluditAPI.swift in Sources */,
 				05B00C9E243647C0002D6A11 /* NewOrUpdatedPageResponse.swift in Sources */,
+				0599519C2471631A00E3FD15 /* SettingsInteractor.swift in Sources */,
 				05DB7C2D2449E23D00B1B371 /* SettingsResponse.swift in Sources */,
 				05B00CC7243739C8002D6A11 /* TabBarViewController.swift in Sources */,
 				05B00C9A24363BBC002D6A11 /* APIEndpoints.swift in Sources */,
+				059951A324716E2200E3FD15 /* TextFieldInCell.swift in Sources */,
 				05F7AFAF243A6FB900BF3AB3 /* PageContentsViewController.swift in Sources */,
 				05DB7C312449E8C000B1B371 /* CategoriesResponse.swift in Sources */,
 				05A0D445245891FA005B0D9D /* UIColorExtenstion.swift in Sources */,
@@ -491,6 +522,7 @@
 				05B00CD524373AA7002D6A11 /* SettingsViewController.swift in Sources */,
 				05B00C952435D7B5002D6A11 /* ListPagesResponse.swift in Sources */,
 				05B00C642435D6CD002D6A11 /* SceneDelegate.swift in Sources */,
+				0599519E2471632400E3FD15 /* SettingsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
