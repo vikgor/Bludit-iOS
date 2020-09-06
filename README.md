@@ -4,8 +4,7 @@ Bludit version: 3.12.
 API plugin version: 3.12.
 
 
-| ![screenshot1](https://github.com/vikgor/Bludit-iOS/blob/master/screenshots/screenshot1.png)  |  ![screenshot2](https://github.com/vikgor/Bludit-iOS/blob/master/screenshots/screenshot2.png)  |  ![screenshot3](https://github.com/vikgor/Bludit-iOS/blob/master/screenshots/screenshot3.png)  |
-![screenshot4](https://github.com/vikgor/Bludit-iOS/blob/master/screenshots/screenshot4.png)  |
+| ![screenshot1](https://github.com/vikgor/Bludit-iOS/blob/master/screenshots/screenshot1.png)  |  ![screenshot2](https://github.com/vikgor/Bludit-iOS/blob/master/screenshots/screenshot2.png)  |  ![screenshot3](https://github.com/vikgor/Bludit-iOS/blob/master/screenshots/screenshot3.png)  | ![screenshot4](https://github.com/vikgor/Bludit-iOS/blob/master/screenshots/screenshot4.png)  |
 |:-:|:-:|:-:|:-:|
 
 ### Initial setup:
