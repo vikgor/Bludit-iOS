@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050F21B22505672E0079FDB4 /* screenshot3.png in Resources */ = {isa = PBXBuildFile; fileRef = 050F21AE2505672D0079FDB4 /* screenshot3.png */; };
+		050F21B32505672E0079FDB4 /* screenshot4.png in Resources */ = {isa = PBXBuildFile; fileRef = 050F21AF2505672D0079FDB4 /* screenshot4.png */; };
+		050F21B42505672E0079FDB4 /* screenshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 050F21B02505672D0079FDB4 /* screenshot1.png */; };
+		050F21B52505672E0079FDB4 /* screenshot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 050F21B12505672E0079FDB4 /* screenshot2.png */; };
 		0599519C2471631A00E3FD15 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599519B2471631A00E3FD15 /* SettingsInteractor.swift */; };
 		0599519E2471632400E3FD15 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599519D2471632400E3FD15 /* SettingsPresenter.swift */; };
 		059951A024716A8000E3FD15 /* CellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599519F24716A8000E3FD15 /* CellLabel.swift */; };
@@ -69,6 +73,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		050F21AE2505672D0079FDB4 /* screenshot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot3.png; sourceTree = "<group>"; };
+		050F21AF2505672D0079FDB4 /* screenshot4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot4.png; sourceTree = "<group>"; };
+		050F21B02505672D0079FDB4 /* screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1.png; sourceTree = "<group>"; };
+		050F21B12505672E0079FDB4 /* screenshot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot2.png; sourceTree = "<group>"; };
 		0599519B2471631A00E3FD15 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		0599519D2471632400E3FD15 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		0599519F24716A8000E3FD15 /* CellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellLabel.swift; sourceTree = "<group>"; };
@@ -147,6 +155,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		050F21AD250566F00079FDB4 /* screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				050F21B02505672D0079FDB4 /* screenshot1.png */,
+				050F21B12505672E0079FDB4 /* screenshot2.png */,
+				050F21AE2505672D0079FDB4 /* screenshot3.png */,
+				050F21AF2505672D0079FDB4 /* screenshot4.png */,
+			);
+			path = screenshots;
+			sourceTree = "<group>";
+		};
 		059951A124716D0D00E3FD15 /* Next view in settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +186,7 @@
 		05B00C552435D6CD002D6A11 = {
 			isa = PBXGroup;
 			children = (
+				050F21AD250566F00079FDB4 /* screenshots */,
 				05B00C9824362087002D6A11 /* README.md */,
 				05B00C602435D6CD002D6A11 /* Bludit */,
 				05B00C772435D6D4002D6A11 /* BluditTests */,
@@ -462,9 +482,13 @@
 				05B00CF92438DCAC002D6A11 /* CreateNewPageViewController.xib in Resources */,
 				05B00CC8243739C8002D6A11 /* TabBarViewController.xib in Resources */,
 				05B00C6E2435D6D4002D6A11 /* LaunchScreen.storyboard in Resources */,
+				050F21B22505672E0079FDB4 /* screenshot3.png in Resources */,
 				05B00CD224373A9E002D6A11 /* DraftsViewController.xib in Resources */,
 				05B00CCE24373A85002D6A11 /* MainViewController.xib in Resources */,
+				050F21B52505672E0079FDB4 /* screenshot2.png in Resources */,
+				050F21B32505672E0079FDB4 /* screenshot4.png in Resources */,
 				05B00CDB24373B42002D6A11 /* Localizable.strings in Resources */,
+				050F21B42505672E0079FDB4 /* screenshot1.png in Resources */,
 				05B00C6B2435D6D3002D6A11 /* Assets.xcassets in Resources */,
 				05B00CE124373D7D002D6A11 /* LoginViewController.xib in Resources */,
 			);
