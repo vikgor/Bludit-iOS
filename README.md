@@ -1,5 +1,10 @@
 #  Bludit iOS Client
 
+
+[Bludit](https://github.com/bludit/bludit) is a Simple, Fast and Flexible CMS.
+
+Bludit is a web application to build your own website or blog in seconds, it's completely free and open source. Bludit uses files in JSON format to store the content, you don't need to install or configure a database. You only need a web server with PHP support.
+
 Bludit version: 3.12. 
 API plugin version: 3.12.
 
